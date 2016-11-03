@@ -27,7 +27,7 @@ class NoopTable(Tuple, DeclarativeBase):
     This table doesn't do anything
 
     """
-    __tupleType__ = 'papp_noop.NoopTable'
+    __tupleType__ = 'papp_base.NoopTable'
     __tablename__ = 'NoopTable'
 
     id = Column(Integer, primary_key=True)
