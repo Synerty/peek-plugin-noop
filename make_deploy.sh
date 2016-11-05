@@ -25,6 +25,8 @@ mkdir -p $DIR
 
 echo "New version is $VER"
 
+find ${PAPP_NAME}
+
 # Source
 cp -pr ${PAPP_NAME}/alembic $DIR
 cp -pr ${PAPP_NAME}/src/${PAPP_NAME} $DIR
