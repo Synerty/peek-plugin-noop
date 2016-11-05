@@ -26,7 +26,7 @@ mkdir -p $DIR
 echo "New version is $VER"
 
 # Source
-cp -pr papp_noop/src/papp_noop $DIR
+cp -pr ${PAPP_NAME}/alembic $DIR
 cp -pr ${PAPP_NAME}/src/${PAPP_NAME} $DIR
 cp -pr ${PAPP_NAME}/papp_changelog.txt $DIR
 cp -pr ${PAPP_NAME}/papp_version.txt $DIR
