@@ -1,11 +1,15 @@
+import logging
 import os
 from twisted.internet import reactor
 
-from papp_base.PappMainBase import PappMainBase
-from papp_base.storage import DbConn
+from papp_base.PappServerMainBase import PappServerMainBase
+from papp_base.storage import DbConnBase
+from papp_base.storage.DbConnBase import DbConnBase
+from rapui.vortex.Tuple import removeTuplesForPackage
 
+logger = logging.getLogger(__name__)
 
-class PappMain(PappMainBase):
+class PappServerMain(PappServerMainBase):
     _instance = None
 
     def _initSelf(self):
@@ -15,38 +19,56 @@ class PappMain(PappMainBase):
     def platform(self):
         return self._platform
 
-    def start(self):
+    def _initialiseDb(self):
 
         # Configure database
         p = os.path
         alembicDir = p.join(p.dirname(p.dirname(__file__)), "alembic")
 
         from papp_noop.storage import DeclarativeBase
-        DbConn.setup(
+        self._dbConn = DbConnBase(
             dbConnectString=self.platform.dbConnectString,
             metadata=DeclarativeBase.metadata,
             alembicDir=alembicDir
         )
 
+        self._dbConn.migrate()
+
+    def start(self):
+        self._initialiseDb()
+
         # Force migration
-        DbConn.getPappOrmSession()
         def started():
             self._startLaterCall = None
-            print "PappClient started"
+            logger.info("started")
 
         self._startLaterCall = reactor.callLater(3.0, started)
+        logger.info("starting")
 
     def stop(self):
         from papp_noop.storage import DeclarativeBase
         DeclarativeBase.__unused="Testing imports, after sys.path.pop() in register"
+
         if self._startLaterCall:
             self._startLaterCall.cancel()
-        print "PappClient stop"
+        logger.info( "stopped")
+
+    def unload(self):
+        removeTuplesForPackage("papp_noop")
+        logger.info("unloaded")
 
     def configUrl(self):
         return 'peek_noop'
 
+    @property
+    def dbOrmSession(self):
+        return self._dbConn.getPappOrmSession()
+
+    @property
+    def dbEngine(self):
+        return self._dbConn._dbEngine
+
 
 @property
-def pappMain():
-    return PappMain._instance
+def pappServerMain():
+    return PappServerMain._instance
