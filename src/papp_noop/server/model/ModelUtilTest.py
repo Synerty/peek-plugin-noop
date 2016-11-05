@@ -1,13 +1,17 @@
+from twisted.internet import reactor
+from twisted.internet.defer import Deferred
 from twisted.trial import unittest
-
-from peek.core.model.ModelUtil import trace
-from peek.core.orm import getNovaOrmSession
-from peek.core.orm.ModelSet import ModelNode
 
 
 class ModelUtilTest(unittest.TestCase):
+    def testNoop(self):
+        self.assertTrue(True)
 
-    def testTraceHb9(self):
-        session = getNovaOrmSession()
-        hb9Node = session.query(ModelNode).filter(ModelNode.id == 1010114).one()
-        print trace(hb9Node, depth=8)
+        d = Deferred()
+        reactor.callLater(0.5, d.callback, True)
+        return d
+
+        # def testTraceHb9(self):
+        #     session = getNovaOrmSession()
+        #     hb9Node = session.query(ModelNode).filter(ModelNode.id == 1010114).one()
+        #     print trace(hb9Node, depth=8)
