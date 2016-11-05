@@ -54,7 +54,6 @@ class PappServerMain(PappServerMainBase):
         logger.info( "stopped")
 
     def unload(self):
-        removeTuplesForPackage("papp_noop")
         logger.info("unloaded")
 
     def configUrl(self):
