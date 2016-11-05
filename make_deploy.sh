@@ -25,15 +25,8 @@ mkdir -p $DIR
 
 echo "New version is $VER"
 
-# REMOVE ME, Temparary fix for
-cp peek_agent_pof/src/run_peek_agent.py $DIR/run_agent.py
-
-# REMOVE ME, Temportary fix for agent oracle recompile
-( cd $DIR && wget 'https://pypi.python.org/packages/95/7f/3b74fe3adeb5948187b760330cb7e9175e3484bd6defdfeb9b504d71b4b3/cx_Oracle-5.2.1.tar.gz#md5=65a6bcc5217a9502c10e33fcea2982f3' )
-
-
 # Source
-cp -pr papp_base/src/peek_agent $DIR
+cp -pr papp_noop/src/papp_noop $DIR
 cp -pr ${PAPP_NAME}/src/${PAPP_NAME} $DIR
 cp -pr ${PAPP_NAME}/papp_changelog.txt $DIR
 cp -pr ${PAPP_NAME}/papp_version.txt $DIR
