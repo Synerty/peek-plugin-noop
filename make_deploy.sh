@@ -30,8 +30,8 @@ find ${PAPP_NAME}
 # Source
 cp -pr ${PAPP_NAME}/alembic $DIR
 cp -pr ${PAPP_NAME}/src/${PAPP_NAME} $DIR
-cp -pr ${PAPP_NAME}/papp_changelog.txt $DIR
-cp -pr ${PAPP_NAME}/papp_version.txt $DIR
+cp -pr ${PAPP_NAME}/papp_changelog.json $DIR
+cp -pr ${PAPP_NAME}/papp_version.json $DIR
 
 
 find $DIR -iname .git -exec rm -rf {} \; || true

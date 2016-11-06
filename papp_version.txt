@@ -1,7 +1,0 @@
-Peek App - Noop
-papp_noop
-Synerty Pty Ltd
-www.synerty.com
-#PAPP_VER#
-#PAPP_BUILD#
-#BUILD_DATE#

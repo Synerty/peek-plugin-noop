@@ -1,0 +1,9 @@
+{
+  "title": "Peek App - Noop",
+  "name": "papp_noop",
+  "company": "Synerty Pty Ltd",
+  "website": "www.synerty.com",
+  "version": "#PAPP_VER#",
+  "buildNumber": "#PAPP_BUILD#",
+  "buildDate": "#BUILD_DATE#"
+}
