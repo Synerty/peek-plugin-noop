@@ -19,23 +19,9 @@ class PappServerMain(PappServerMainBase):
     def platform(self):
         return self._platform
 
-    def _initialiseDb(self):
-
-        # Configure database
-        p = os.path
-        alembicDir = p.join(p.dirname(p.dirname(__file__)), "alembic")
-
-        from papp_noop.storage import DeclarativeBase
-        self._dbConn = DbConnBase(
-            dbConnectString=self.platform.dbConnectString,
-            metadata=DeclarativeBase.metadata,
-            alembicDir=alembicDir
-        )
-
-        self._dbConn.migrate()
-
     def start(self):
-        self._initialiseDb()
+        from papp_noop.storage import DeclarativeBase
+        self._initialiseDb(DeclarativeBase.metadata, __file__)
 
         # Force migration
         def started():
