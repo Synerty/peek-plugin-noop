@@ -74,7 +74,7 @@ echo "Compiling all python modules"
 ( cd $DIR/cpython && python -m compileall -f . )
 
 echo "Compiling all pypy modules"
-( cd $DIR/pypy && pypy -m compileall -f . )
+( cd $DIR/pypy && pypy -m compileall -b -f . )
 
 
 echo "Deleting all source files"
