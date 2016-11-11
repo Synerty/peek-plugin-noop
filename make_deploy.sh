@@ -71,10 +71,10 @@ done
 
 pushd deploy
 
-mv $TAR_DIR o$TAR_DIR
-
+# Duplicate the source dir
+mv $TAR_DIR cpython
 mkdir $TAR_DIR
-mv o$TAR_DIR $TAR_DIR/cpython
+mv cpython $TAR_DIR/
 cp -pr $TAR_DIR/cpython $TAR_DIR/pypy
 
 echo "Compiling all python modules"
@@ -83,7 +83,10 @@ echo "Compiling all python modules"
 echo "Compiling all pypy modules"
 ( cd $TAR_DIR/pypy && pypy -m compileall -f . )
 
+popd
+
 echo "Deleting all source files"
 find $DIR -name "*.py" -exec rm {} \;
+
 
 tar cjf ${TAR_DIR}.tar.bz2 -C deploy $TAR_DIR
