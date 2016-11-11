@@ -69,8 +69,19 @@ for f in `grep -l -r  '#BUILD_DATE#' .`; do
     sed -i "s/#BUILD_DATE#/$DATE/g" $f
 done
 
+pushd deploy
+
+mv $TAR_DIR o$TAR_DIR
+
+mkdir $TAR_DIR
+mv o$TAR_DIR $TAR_DIR/cpython
+cp -pr $TAR_DIR/cpython $TAR_DIR/pypy
+
 echo "Compiling all python modules"
-( cd $DIR && python -m compileall -f . )
+( cd $TAR_DIR/cpython && python -m compileall -f . )
+
+echo "Compiling all pypy modules"
+( cd $TAR_DIR/pypy && pypy -m compileall -f . )
 
 echo "Deleting all source files"
 find $DIR -name "*.py" -exec rm {} \;
