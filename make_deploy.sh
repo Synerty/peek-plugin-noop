@@ -21,7 +21,7 @@ VER="${VER}"
 DATE="`convertBambooDate`"
 
 if [ "${VER}" == '${bamboo.jira.version}' ]; then
-    VER="b${DATE}#${BUILD}"
+    VER="b${DATE}"
 fi
 
 echo "New version is $VER"
