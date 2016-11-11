@@ -16,7 +16,7 @@ PYTHONPATH="$PYTHONPATH:`pwd`/${PAPP_NAME}/src"
 export PYTHONPATH
 
 
-FILES=`find $UT_DIRS -name "*.py" -exec grep -l unittest.TestCase {} \;`
+FILES=`find $PAPP_NAME -name "*.py" -exec grep -l unittest.TestCase {} \;`
 echo "Running unit tests in files:"
 echo $FILES
 
