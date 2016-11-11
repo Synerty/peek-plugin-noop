@@ -2,12 +2,12 @@ import logging
 
 from twisted.internet import reactor
 
-from papp_base.PappAgentMainBase import PappAgentMainBase
+from papp_base.PappWorkerMainBase import PappWorkerMainBase
 
 logger = logging.getLogger(__name__)
 
 
-class PappAgentMain(PappAgentMainBase):
+class PappWorkerMain(PappWorkerMainBase):
     _instance = None
 
     def _initSelf(self):
@@ -37,5 +37,5 @@ class PappAgentMain(PappAgentMainBase):
 
 
 @property
-def pappAgentMain():
-    return PappAgentMain._instance
+def pappWorkerMain():
+    return PappWorkerMain._instance
