@@ -29,15 +29,14 @@ echo "New build is $BUILD"
 
 TAR_DIR="${PAPP_NAME}_$VER#$BUILD"
 DIR="deploy/$TAR_DIR"
-mkdir -p $DIR
+mkdir -p $DIR/cpython
 
 echo "New version is $VER"
 
-find ${PAPP_NAME}
 
 # Source
-cp -pr ${PAPP_NAME}/alembic $DIR
-cp -pr ${PAPP_NAME}/src/${PAPP_NAME} $DIR
+cp -pr ${PAPP_NAME}/alembic $DIR/cpython
+cp -pr ${PAPP_NAME}/src/${PAPP_NAME} $DIR/cpython
 cp -pr ${PAPP_NAME}/papp_changelog.json $DIR
 cp -pr ${PAPP_NAME}/papp_version.json $DIR
 
@@ -69,21 +68,14 @@ for f in `grep -l -r  '#BUILD_DATE#' .`; do
     sed -i "s/#BUILD_DATE#/$DATE/g" $f
 done
 
-pushd deploy
-
-# Duplicate the source dir
-mv $TAR_DIR cpython
-mkdir $TAR_DIR
-mv cpython $TAR_DIR/
-cp -pr $TAR_DIR/cpython $TAR_DIR/pypy
+cp -pr $DIR/cpython $DIR/pypy
 
 echo "Compiling all python modules"
-( cd $TAR_DIR/cpython && python -m compileall -f . )
+( cd $DIR/cpython && python -m compileall -f . )
 
 echo "Compiling all pypy modules"
-( cd $TAR_DIR/pypy && pypy -m compileall -f . )
+( cd $DIR/pypy && pypy -m compileall -f . )
 
-popd
 
 echo "Deleting all source files"
 find $DIR -name "*.py" -exec rm {} \;
