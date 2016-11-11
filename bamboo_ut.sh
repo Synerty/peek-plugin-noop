@@ -4,7 +4,7 @@ set -o nounset
 set -o errexit
 set -x
 
-PAPP_NAME="peek_agent"
+PAPP_NAME="papp_noop"
 
 # activate virtualenv
 export PATH=/home/bamboo/pyenvs/py_ut/bin:$PATH
