@@ -4,22 +4,30 @@ set -o nounset
 set -o errexit
 set -x
 
-
-echo "start version is $VER"
-
 PAPP_NAME='papp_noop'
+
+function convertBambooDate() {
+# EG s="2010-01-01T01:00:00.000+01:00"
+# TO 100101.0100
+python <<EOF
+from dateutil.parser import parse
+print parse("${BAMBOO_DATE}").strftime('%y%m%d.%H%M')
+EOF
+}
+echo "start version is $VER"
 
 BUILD="${BUILD}"
 VER="${VER}"
-DATE="`date --utc`"
+DATE="`convertBambooDate`"
 
-if [ "${VER}" != '${bamboo.jira.version}' ]; then
-    TAR_DIR="${PAPP_NAME}_$VER"
-else
-    VER="b`date +%y%m%d.%H%M`"
-    TAR_DIR="${PAPP_NAME}_$VER#$BUILD"
+if [ "${VER}" == '${bamboo.jira.version}' ]; then
+    VER="b${DATE}"
 fi
 
+echo "New version is $VER"
+echo "New build is $BUILD"
+
+TAR_DIR="${PAPP_NAME}_$VER#$BUILD"
 DIR="deploy/$TAR_DIR"
 mkdir -p $DIR
 
