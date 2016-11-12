@@ -3,8 +3,28 @@ import logging
 from twisted.internet import reactor
 
 from papp_base.PappWorkerMainBase import PappWorkerMainBase
+from papp_base.PeekWorkerApiBase import PeekWorkerApiBase
+from papp_noop.worker.NoopCeleryApp import celeryApp
+from papp_noop.worker.NoopWorkerTask import task1
+from rapui.DeferUtil import printFailure
 
 logger = logging.getLogger(__name__)
+
+
+def callWorkerLoop():
+    logger.info("Ticking along")
+    # d = task1.delay("Some task")
+    #
+    # def cb(result):
+    #     logger.info("Worker returned, result %s", result)
+    #     reactor.callLater(5, callWorkerLoop)
+    #
+    # d.addCallback(cb)
+    # d.addErrback(printFailure)
+    # return d
+
+
+
 
 
 class PappWorkerMain(PappWorkerMainBase):
@@ -15,6 +35,7 @@ class PappWorkerMain(PappWorkerMainBase):
 
     @property
     def platform(self):
+        assert isinstance(self._platform, PeekWorkerApiBase)
         return self._platform
 
     def start(self):
@@ -22,18 +43,26 @@ class PappWorkerMain(PappWorkerMainBase):
         def started():
             self._startLaterCall = None
             logger.info("started")
+            callWorkerLoop()
 
         self._startLaterCall = reactor.callLater(3.0, started)
         logger.info("starting")
 
     def stop(self):
-
         if self._startLaterCall:
             self._startLaterCall.cancel()
         logger.info("stopped")
 
     def unload(self):
         logger.info("unloaded")
+
+    @property
+    def celeryAppIncludes(self):
+        return ["papp_noop.worker.NoopWorkerTask"]
+
+    @property
+    def celeryApp(self):
+        return celeryApp
 
 
 @property
