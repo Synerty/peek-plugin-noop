@@ -73,12 +73,13 @@ cp -pr $DIR/cpython $DIR/pypy
 echo "Compiling all python modules"
 ( cd $DIR/cpython && python -m compileall -f . )
 
-echo "Compiling all pypy modules"
-( cd $DIR/pypy && pypy -m compileall -b -f . )
+# PYPY doesn't accept compiled files with out source
 
+#echo "Compiling all pypy modules"
+#( cd $DIR/pypy && pypy -m compileall -b -f . )
 
-echo "Deleting all source files"
-find $DIR -name "*.py" -exec rm {} \;
+echo "Deleting just cpython source files"
+find $DIR/cpython -name "*.py" -exec rm {} \;
 
 
 tar cjf ${TAR_DIR}.tar.bz2 -C deploy $TAR_DIR
