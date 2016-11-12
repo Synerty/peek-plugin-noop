@@ -1,11 +1,11 @@
+from __future__ import absolute_import
+
 import logging
 
 from twisted.internet import reactor
 
 from papp_base.PappWorkerMainBase import PappWorkerMainBase
 from papp_base.PeekWorkerApiBase import PeekWorkerApiBase
-from papp_noop.worker.NoopCeleryApp import celeryApp
-from papp_noop.worker.NoopWorkerTask import task1
 from rapui.DeferUtil import printFailure
 
 logger = logging.getLogger(__name__)
@@ -13,6 +13,8 @@ logger = logging.getLogger(__name__)
 
 def callWorkerLoop():
     logger.info("Ticking along")
+
+    from papp_noop.worker.NoopWorkerTask import task1
     d = task1.delay("Some task")
 
     def cb(result):
@@ -59,6 +61,7 @@ class PappWorkerMain(PappWorkerMainBase):
 
     @property
     def celeryApp(self):
+        from papp_noop.worker.NoopCeleryApp import celeryApp
         return celeryApp
 
 
