@@ -13,20 +13,15 @@ logger = logging.getLogger(__name__)
 
 def callWorkerLoop():
     logger.info("Ticking along")
-    # d = task1.delay("Some task")
-    #
-    # def cb(result):
-    #     logger.info("Worker returned, result %s", result)
-    #     reactor.callLater(5, callWorkerLoop)
-    #
-    # d.addCallback(cb)
-    # d.addErrback(printFailure)
-    # return d
+    d = task1.delay("Some task")
 
-    reactor.callLater(5, callWorkerLoop)
+    def cb(result):
+        logger.info("Worker returned, result %s", result)
+        reactor.callLater(5, callWorkerLoop)
 
-
-
+    d.addCallback(cb)
+    d.addErrback(printFailure)
+    return d
 
 
 class PappWorkerMain(PappWorkerMainBase):

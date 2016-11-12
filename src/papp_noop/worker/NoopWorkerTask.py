@@ -9,7 +9,7 @@ logger = get_task_logger(__name__)
 
 
 @CeleryClient
-@celeryApp.task(name="papp_nooop.task1")
+@celeryApp.task
 def task1(inStr):
     logger.info("Received %s", inStr)
     sleep(2)
