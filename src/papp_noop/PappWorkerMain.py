@@ -23,6 +23,8 @@ def callWorkerLoop():
     # d.addErrback(printFailure)
     # return d
 
+    reactor.callLater(5, callWorkerLoop)
+
 
 
 
