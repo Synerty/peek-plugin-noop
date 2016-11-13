@@ -3,7 +3,6 @@ import logging
 from twisted.internet import reactor
 
 from papp_base.PappServerMainBase import PappServerMainBase
-from papp_noop.server import NoopCeleryTaskMaster
 
 logger = logging.getLogger(__name__)
 
@@ -25,6 +24,8 @@ class PappServerMain(PappServerMainBase):
         def started():
             self._startLaterCall = None
             logger.info("started")
+            
+            from papp_noop.server import NoopCeleryTaskMaster
             NoopCeleryTaskMaster.start()
 
         self._startLaterCall = reactor.callLater(3.0, started)
