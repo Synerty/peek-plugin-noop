@@ -1,25 +1,53 @@
 from __future__ import absolute_import
 
 import logging
+from datetime import datetime
 
 from twisted.internet import reactor
 
 from papp_base.PappWorkerMainBase import PappWorkerMainBase
 from papp_base.PeekWorkerApiBase import PeekWorkerApiBase
 from rapui.DeferUtil import printFailure
+from rapui.vortex.SerialiseUtil import fromStr, T_DATETIME
 
 logger = logging.getLogger(__name__)
 
+REPEAT = 0.5
 
-def callWorkerLoop():
-    logger.info("Ticking along")
+
+def callWorkerSleepLoop():
+    # logger.info("Sleep Only Task - Ticking along")
 
     from papp_noop.worker.NoopWorkerTask import task1
-    d = task1.delay("Some task")
+    startTime = datetime.utcnow()
 
-    def cb(result):
-        logger.info("Worker returned, result %s", result)
-        reactor.callLater(5, callWorkerLoop)
+    d = task1.delay("Some task arg str")
+
+    def cb(resultStr):
+        resultDate = fromStr(resultStr, T_DATETIME)
+        logger.info("Sleep Only Task started %s, returned %s",
+                    resultDate - startTime,
+                    datetime.utcnow() - startTime)
+
+        reactor.callLater(REPEAT, callWorkerSleepLoop)
+
+    d.addCallback(cb)
+    d.addErrback(printFailure)
+    return d
+
+
+def callWorkerDbLoop():
+    # logger.info("DB Update Task - Ticking along")
+
+    from papp_noop.worker.NoopWorkerTask import dbTask
+    startTime = datetime.utcnow()
+    d = dbTask.delay("db update task str arg")
+
+    def cb(newId):
+        logger.info("DB Update Task newId %s, returned %s",
+                    newId,
+                    datetime.utcnow() - startTime)
+        reactor.callLater(REPEAT, callWorkerDbLoop)
 
     d.addCallback(cb)
     d.addErrback(printFailure)
@@ -42,7 +70,11 @@ class PappWorkerMain(PappWorkerMainBase):
         def started():
             self._startLaterCall = None
             logger.info("started")
-            callWorkerLoop()
+            for _ in range(3):
+                callWorkerSleepLoop()
+
+            for _ in range(3):
+                callWorkerDbLoop()
 
         self._startLaterCall = reactor.callLater(3.0, started)
         logger.info("starting")
@@ -65,6 +97,5 @@ class PappWorkerMain(PappWorkerMainBase):
         return celeryApp
 
 
-@property
-def pappWorkerMain():
+def getPappWorkerMain():
     return PappWorkerMain._instance

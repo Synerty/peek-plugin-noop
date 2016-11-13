@@ -68,18 +68,35 @@ for f in `grep -l -r  '#BUILD_DATE#' .`; do
     sed -i "s/#BUILD_DATE#/$DATE/g" $f
 done
 
+###########################################
+# PYPY WAS SLOWER THAN CPYTHON
+# Using a simple task, all the dispatching took far longer with pypy
+# pypy 5.6 was tried, and it was lef for a while, it just didn't optimise that part
+# While it may optimise computationally expensive tasks, it probably won't help Peek
+###########################################
+
+ Copy cpython source to pypy
 cp -pr $DIR/cpython $DIR/pypy
 
-echo "Compiling all python modules"
-( cd $DIR/cpython && python -m compileall -f . )
-
-# PYPY doesn't accept compiled files with out source
-
-#echo "Compiling all pypy modules"
-#( cd $DIR/pypy && pypy -m compileall -b -f . )
+pushd $DIR/cpython
+echo "Compiling all cpython python modules"
+python -m compileall -f .
 
 echo "Deleting just cpython source files"
-find $DIR/cpython -name "*.py" -exec rm {} \;
+find . -name "*.py" -exec rm {} \;
+popd
+
+
+# PYPY doesn't accept compiled files with out source
+# The worker should never perform an upgrade
+echo "Removing non worker source files"
+pushd $DIR/pypy
+rm -rf $PAPP_NAME/agent
+rm -rf $PAPP_NAME/client
+rm -rf $PAPP_NAME/server
+rm -rf alembic
+popd
+
 
 
 tar cjf ${TAR_DIR}.tar.bz2 -C deploy $TAR_DIR
