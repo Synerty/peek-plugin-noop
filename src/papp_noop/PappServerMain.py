@@ -24,7 +24,7 @@ class PappServerMain(PappServerMainBase):
         def started():
             self._startLaterCall = None
             logger.info("started")
-            
+
             from papp_noop.server import NoopCeleryTaskMaster
             NoopCeleryTaskMaster.start()
 
@@ -52,6 +52,11 @@ class PappServerMain(PappServerMainBase):
     @property
     def dbEngine(self):
         return self._dbConn._dbEngine
+
+    @property
+    def celeryApp(self):
+        from papp_noop.worker.NoopCeleryApp import celeryApp
+        return celeryApp
 
 
 @property
