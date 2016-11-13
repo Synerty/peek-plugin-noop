@@ -11,6 +11,7 @@ class PappServerMain(PappServerMainBase):
 
     def _initSelf(self):
         self._instance = self
+        self._startLaterCall = None
 
     @property
     def platform(self):
