@@ -75,8 +75,8 @@ done
 # While it may optimise computationally expensive tasks, it probably won't help Peek
 ###########################################
 
- Copy cpython source to pypy
-cp -pr $DIR/cpython $DIR/pypy
+## Copy cpython source to pypy
+#cp -pr $DIR/cpython $DIR/pypy
 
 pushd $DIR/cpython
 echo "Compiling all cpython python modules"
@@ -87,15 +87,15 @@ find . -name "*.py" -exec rm {} \;
 popd
 
 
-# PYPY doesn't accept compiled files with out source
-# The worker should never perform an upgrade
-echo "Removing non worker source files"
-pushd $DIR/pypy
-rm -rf $PAPP_NAME/agent
-rm -rf $PAPP_NAME/client
-rm -rf $PAPP_NAME/server
-rm -rf alembic
-popd
+## PYPY doesn't accept compiled files with out source
+## The worker should never perform an upgrade
+#echo "Removing non worker source files"
+#pushd $DIR/pypy
+#rm -rf $PAPP_NAME/agent
+#rm -rf $PAPP_NAME/client
+#rm -rf $PAPP_NAME/server
+#rm -rf alembic
+#popd
 
 
 
