@@ -3,11 +3,15 @@ import logging
 from twisted.internet import reactor
 
 from papp_base.PappServerMainBase import PappServerMainBase
+import os
+
 
 logger = logging.getLogger(__name__)
 
 class PappServerMain(PappServerMainBase):
     _instance = None
+
+    _title = "Noop for testing"
 
     def _initSelf(self):
         self._instance = self
@@ -32,6 +36,9 @@ class PappServerMain(PappServerMainBase):
         self._startLaterCall = reactor.callLater(3.0, started)
         logger.info("starting")
 
+        from papp_noop import admin
+        admin.setup(self._platform)
+
     def stop(self):
         from papp_noop.storage import DeclarativeBase
         DeclarativeBase.__unused="Testing imports, after sys.path.pop() in register"
@@ -42,9 +49,6 @@ class PappServerMain(PappServerMainBase):
 
     def unload(self):
         logger.info("unloaded")
-
-    def configUrl(self):
-        return 'peek_noop'
 
     @property
     def dbOrmSession(self):
