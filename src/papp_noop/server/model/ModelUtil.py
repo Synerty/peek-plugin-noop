@@ -11,7 +11,7 @@ def trace(startNode, depth=4, indent=0, tracedNodes=None, lastStartNode=None):
         return ""
 
     formatProps = lambda n: ', '.join(["%s:'%s'" % i
-                                       for i in n.props.items()
+                                       for i in list(n.props.items())
                                        if not i[0] in ['name', 'compareId']])
 
     str = '%s->[%s], id:%s, %s\n' % (('-' * 4 * indent),

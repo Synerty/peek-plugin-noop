@@ -16,4 +16,4 @@ from sqlalchemy.schema import MetaData
 metadata = MetaData(schema="papp_noop")
 DeclarativeBase = declarative_base(metadata=metadata)
 
-import NoopTable
+from . import NoopTable

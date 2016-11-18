@@ -1,1 +1,1 @@
-import noopadm
+from . import noopadm
