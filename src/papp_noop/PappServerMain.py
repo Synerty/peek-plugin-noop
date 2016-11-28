@@ -2,9 +2,7 @@ import logging
 
 from twisted.internet import reactor
 
-from papp_base.PappServerMainBase import PappServerMainBase
-import os
-
+from papp_base.server.PappServerMainBase import PappServerMainBase
 
 logger = logging.getLogger(__name__)
 

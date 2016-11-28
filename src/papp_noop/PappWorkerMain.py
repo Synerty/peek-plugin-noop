@@ -1,11 +1,9 @@
-
-
 import logging
 
 from twisted.internet import reactor
 
-from papp_base.PappWorkerMainBase import PappWorkerMainBase
-from papp_base.PeekWorkerApiBase import PeekWorkerApiBase
+from papp_base.worker.PappWorkerMainBase import PappWorkerMainBase
+from papp_base.worker.PeekWorkerApiBase import PeekWorkerApiBase
 
 logger = logging.getLogger(__name__)
 

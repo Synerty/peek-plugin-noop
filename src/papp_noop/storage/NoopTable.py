@@ -15,7 +15,7 @@ from sqlalchemy import Integer, String
 from sqlalchemy.sql.schema import Index
 
 from papp_noop.storage.DeclarativeBase import DeclarativeBase
-from rapui.vortex.Tuple import Tuple, addTupleType, TupleField
+from txhttputil import Tuple, addTupleType, TupleField
 
 logger = logging.getLogger(__name__)
 

@@ -1,12 +1,10 @@
-
-
 import logging
 from datetime import datetime
 
 from twisted.internet import reactor
 
-from rapui.DeferUtil import printFailure
-from rapui.vortex.SerialiseUtil import fromStr, T_DATETIME
+from txhttputil import fromStr, T_DATETIME
+from txhttputil import printFailure
 
 logger = logging.getLogger(__name__)
 
@@ -55,8 +53,9 @@ def callWorkerDbLoop():
 
 
 def start():
-    for _ in range(3):
-        callWorkerSleepLoop()
-
-    for _ in range(3):
-        callWorkerDbLoop()
+    pass
+    # for _ in range(4):
+    #     callWorkerSleepLoop()
+    #
+    # for _ in range(2):
+    #     callWorkerDbLoop()

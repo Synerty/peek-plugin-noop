@@ -7,7 +7,7 @@ from sqlalchemy.sql.functions import func
 from papp_base.worker import CeleryDbConn
 from papp_noop.storage.NoopTable import NoopTable
 from papp_noop.worker.NoopCeleryApp import celeryApp
-from rapui.vortex.SerialiseUtil import toStr
+from txhttputil import toStr
 from txcelery.defer import CeleryClient
 
 logger = get_task_logger(__name__)

@@ -7,7 +7,7 @@ Created on 09/07/2014
 from peek.core.orm import getNovaOrmSession
 
 from papp_noop.storage.NoopTable import NoopTable
-from rapui.handler.OrmCrudHandler import OrmCrudHandler
+from txhttputil import OrmCrudHandler
 
 __datKey = {
     'papp': 'papp_noop',
