@@ -3,8 +3,8 @@ from datetime import datetime
 
 from twisted.internet import reactor
 
-from txhttputil import fromStr, T_DATETIME
-from txhttputil import printFailure
+from vortex.SerialiseUtil import fromStr, T_DATETIME
+from txhttputil.util.DeferUtil import printFailure
 
 logger = logging.getLogger(__name__)
 

@@ -1,4 +1,5 @@
 import logging
+import os
 
 from twisted.internet import reactor
 
@@ -10,6 +11,7 @@ class PappServerMain(PappServerMainBase):
     _instance = None
 
     _title = "Noop for testing"
+    _angularAdminModule = "papp-noop-admin.module"
 
     def _initSelf(self):
         self._instance = self
@@ -20,10 +22,14 @@ class PappServerMain(PappServerMainBase):
         return self._platform
 
     def start(self):
+        # Force migration
         from papp_noop.storage import DeclarativeBase
         self._initialiseDb(DeclarativeBase.metadata, __file__)
 
-        # Force migration
+        from papp_noop.admin import papp_noop
+        siteDir = os.path.dirname(papp_noop.__file__)
+        self.platform.addStaticResourceDir(siteDir)
+
         def started():
             self._startLaterCall = None
             logger.info("started")
@@ -62,6 +68,5 @@ class PappServerMain(PappServerMainBase):
         return celeryApp
 
 
-@property
 def pappServerMain():
     return PappServerMain._instance
