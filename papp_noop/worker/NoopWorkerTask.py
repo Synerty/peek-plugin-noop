@@ -3,11 +3,11 @@ from time import sleep
 
 from celery.utils.log import get_task_logger
 from sqlalchemy.sql.functions import func
+from txhttputil import toStr
 
 from papp_base.worker import CeleryDbConn
 from papp_noop.storage.NoopTable import NoopTable
 from papp_noop.worker.NoopCeleryApp import celeryApp
-from txhttputil import toStr
 from txcelery.defer import CeleryClient
 
 logger = get_task_logger(__name__)

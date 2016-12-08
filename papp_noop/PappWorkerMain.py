@@ -2,20 +2,20 @@ import logging
 
 from twisted.internet import reactor
 
-from papp_base.worker.PappWorkerMainBase import PappWorkerMainBase
-from papp_base.worker.PeekWorkerApiBase import PeekWorkerApiBase
+from papp_base.worker.PappWorkerEntryHookABC import PappWorkerEntryHookABC
+from papp_base.worker.PeekWorkerProviderABC import PeekWorkerProviderABC
 
 logger = logging.getLogger(__name__)
 
-class PappWorkerMain(PappWorkerMainBase):
+class PappWorkerMain(PappWorkerEntryHookABC):
     _instance = None
 
-    def _initSelf(self):
+    def load(self):
         self._instance = self
 
     @property
     def platform(self):
-        assert isinstance(self._platform, PeekWorkerApiBase)
+        assert isinstance(self._platform, PeekWorkerProviderABC)
         return self._platform
 
     def start(self):
