@@ -26,27 +26,30 @@ def package_files(startDir,
             if [e for e in excludeFiles if e in filename]:
                 continue
 
-            paths.append(os.path.join(path, filename))
+            paths.append(os.path.join(path[len(package_name)+1:], filename))
 
     return paths
 
 
-package_data=package_files("server_fe")
-package_data+= package_files( "client_fe")
-package_data+= package_files( "alembic")
-package_data.append(os.path.join("papp_changelog.json"))
-package_data.append(os.path.join("papp_package.json"))
+package_data = package_files("server_fe")
+package_data += package_files("client_fe")
+package_data += package_files("alembic")
+package_data.append("papp_changelog.json")
+package_data.append("papp_package.json")
+
+print(package_data)
 
 setup(
     name=package_name,
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     package_data={'': package_data},
-    version = package_version,
+    version=package_version,
     description='Peek Platform App - This is the No Operation test/example papp',
     author='Synerty',
     author_email='contact@synerty.com',
     url='https://github.com/Synerty/%s' % package_version,
-    download_url='https://github.com/Synerty/%s/tarball/%s' % (package_name, package_version),
+    download_url='https://github.com/Synerty/%s/tarball/%s' % (
+    package_name, package_version),
     keywords=['Peek', 'Python', 'Platform', 'synerty'],
     classifiers=[],
 )
