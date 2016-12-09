@@ -37,8 +37,6 @@ package_data += package_files("alembic")
 package_data.append("papp_changelog.json")
 package_data.append("papp_package.json")
 
-print(package_data)
-
 setup(
     name=package_name,
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
