@@ -37,7 +37,7 @@ setup(
     name=package_name,
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     package_data={'': package_data},
-    version = '0.0.0',
+    version = package_version,
     description='Peek Platform App - This is the No Operation test/example papp',
     author='Synerty',
     author_email='contact@synerty.com',
