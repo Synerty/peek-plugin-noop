@@ -5,7 +5,7 @@ from distutils.core import setup
 from setuptools import find_packages
 
 package_name = "papp_noop"
-version = "0.0.0"
+package_version = "0.0.0"
 
 egg_info = "papp_noop.egg-info"
 if os.path.isdir(egg_info):
@@ -37,12 +37,12 @@ setup(
     name=package_name,
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     package_data={'': package_data},
-    version=version,
+    version = '0.0.0',
     description='Peek Platform App - This is the No Operation test/example papp',
     author='Synerty',
     author_email='contact@synerty.com',
-    url='https://github.com/Synerty/%s' % version,
-    download_url='https://github.com/Synerty/%s/tarball/%s' % (package_name, version),
+    url='https://github.com/Synerty/%s' % package_version,
+    download_url='https://github.com/Synerty/%s/tarball/%s' % (package_name, package_version),
     keywords=['Peek', 'Python', 'Platform', 'synerty'],
     classifiers=[],
 )
