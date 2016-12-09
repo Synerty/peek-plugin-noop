@@ -43,5 +43,6 @@ python setup.py sdist
 git reset --hard
 
 git tag ${VER}
-#git push --tags
+git push
+git push --tags
 
