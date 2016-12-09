@@ -42,6 +42,6 @@ python setup.py sdist
 # Reset the commit, we don't want versions in the commit
 git reset --hard
 
-git -f tag ${VER}
+git tag ${VER}
 #git push --tags
 
