@@ -29,6 +29,8 @@ def package_files(directory,
 
 
 package_data=package_files("frontend") + package_files("alembic")
+package_data.append(os.path.join("..", "papp_changelog.json"))
+package_data.append(os.path.join("..", "papp_package.json"))
 
 setup(
     name=packageName,
