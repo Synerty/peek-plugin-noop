@@ -31,15 +31,8 @@ fi
 
 echo "Setting version to $VER"
 
-DOWNLOAD_URL="    download_url='"
-DOWNLOAD_URL="${DOWNLOAD_URL}https://github.com/Synerty/${PACKAGE}/tarball/${VER}',"
-
-VERSION="    version='"
-VERSION="${VERSION}${VER}',"
-
 # Update the setup.py
-sed -i "s;.* download_url=.*;${DOWNLOAD_URL};"  setup.py
-sed -i "s;.* version=.*;${VERSION};"  setup.py
+sed -i "s;.*version=.*;version = '${VER}';"  setup.py
 
 # Update the package version
 sed -i "s;.*version.*;__version__ = '${VER}';" ${PACKAGE}/__init__.py
