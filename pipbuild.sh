@@ -19,8 +19,6 @@ fi
 VER="${1:?You must pass a version of the format 0.0.0 as the only argument}"
 
 if git tag | grep -q "${VER}"; then
-    echo "Git tag for version ${VER} already exists." >&2
-    exit 1
 #    read -p "Git tag for version ${VER} already exists, do you want to overwrite (Y/N) ? " -n 1 -r
 #    echo    # (optional) move to a new line
 #    if ! [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -42,6 +40,6 @@ python setup.py sdist
 # Reset the commit, we don't want versions in the commit
 git reset --hard
 
-git tag ${VER}
-git push --tags
+git -f tag ${VER}
+#git push --tags
 
