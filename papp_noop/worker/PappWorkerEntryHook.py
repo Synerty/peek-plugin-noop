@@ -3,7 +3,7 @@ import logging
 from twisted.internet import reactor
 
 from papp_base.worker.PappWorkerEntryHookABC import PappWorkerEntryHookABC
-from papp_base.worker.PeekWorkerProviderABC import PeekWorkerProviderABC
+from papp_base.worker.PeekWorkerPlatformABC import PeekWorkerPlatformABC
 
 logger = logging.getLogger(__name__)
 
@@ -15,7 +15,7 @@ class PappWorkerEntryHook(PappWorkerEntryHookABC):
 
     @property
     def platform(self):
-        assert isinstance(self._platform, PeekWorkerProviderABC)
+        assert isinstance(self._platform, PeekWorkerPlatformABC)
         return self._platform
 
     def start(self):
