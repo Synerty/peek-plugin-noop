@@ -46,7 +46,7 @@ class PappServerEntryHook(PappServerEntryHookABC):
 
     @property
     def dbOrmSession(self):
-        return self._dbConn.getPappOrmSession()
+        return self._dbConn.ormSession
 
     @property
     def dbEngine(self):
