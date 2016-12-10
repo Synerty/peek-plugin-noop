@@ -3,22 +3,21 @@ import logging
 from twisted.internet import reactor
 
 from papp_base.agent.PappAgentEntryHookABC import PappAgentEntryHookABC
+from papp_base.agent.PeekAgentPlatformABC import PeekAgentPlatformABC
 
 logger = logging.getLogger(__name__)
 
 
 class PappAgentEntryHook(PappAgentEntryHookABC):
-    _instance = None
-
-    def _initSelf(self):
-        self._instance = self
 
     @property
-    def platform(self):
+    def platform(self) -> PeekAgentPlatformABC:
         return self._platform
 
+    def load(self):
+        logger.debug("loaded")
+
     def start(self):
-        # Force migration
         def started():
             self._startLaterCall = None
             logger.info("started")
@@ -27,15 +26,9 @@ class PappAgentEntryHook(PappAgentEntryHookABC):
         logger.info("starting")
 
     def stop(self):
-
         if self._startLaterCall:
             self._startLaterCall.cancel()
         logger.info("stopped")
 
     def unload(self):
         logger.info("unloaded")
-
-
-@property
-def pappAgentMain():
-    return PappAgentEntryHook._instance

@@ -8,18 +8,15 @@ from papp_base.worker.PeekWorkerPlatformABC import PeekWorkerPlatformABC
 logger = logging.getLogger(__name__)
 
 class PappWorkerEntryHook(PappWorkerEntryHookABC):
-    _instance = None
-
-    def load(self):
-        self._instance = self
 
     @property
-    def platform(self):
-        assert isinstance(self._platform, PeekWorkerPlatformABC)
+    def platform(self) -> PeekWorkerPlatformABC:
         return self._platform
 
+    def load(self):
+        logger.info("loaded")
+
     def start(self):
-        # Force migration
         def started():
             self._startLaterCall = None
             logger.info("started")
