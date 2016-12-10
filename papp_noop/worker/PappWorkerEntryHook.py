@@ -3,14 +3,14 @@ import logging
 from twisted.internet import reactor
 
 from papp_base.worker.PappWorkerEntryHookABC import PappWorkerEntryHookABC
-from papp_base.worker.PeekWorkerPlatformABC import PeekWorkerPlatformABC
+from papp_base.worker.PeekWorkerPlatformHookABC import PeekWorkerPlatformHookABC
 
 logger = logging.getLogger(__name__)
 
 class PappWorkerEntryHook(PappWorkerEntryHookABC):
 
     @property
-    def platform(self) -> PeekWorkerPlatformABC:
+    def platform(self) -> PeekWorkerPlatformHookABC:
         return self._platform
 
     def load(self):

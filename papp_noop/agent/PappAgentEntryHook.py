@@ -3,7 +3,7 @@ import logging
 from twisted.internet import reactor
 
 from papp_base.agent.PappAgentEntryHookABC import PappAgentEntryHookABC
-from papp_base.agent.PeekAgentPlatformABC import PeekAgentPlatformABC
+from papp_base.agent.PeekAgentPlatformHookABC import PeekAgentPlatformHookABC
 
 logger = logging.getLogger(__name__)
 
@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 class PappAgentEntryHook(PappAgentEntryHookABC):
 
     @property
-    def platform(self) -> PeekAgentPlatformABC:
+    def platform(self) -> PeekAgentPlatformHookABC:
         return self._platform
 
     def load(self):
