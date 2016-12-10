@@ -1,36 +1,27 @@
 import logging
-import os
 
 from twisted.internet import reactor
 
-from papp_base.server import PappServerEntryHookABC
+from papp_base.server.PappServerEntryHookABC import PappServerEntryHookABC
 
 logger = logging.getLogger(__name__)
 
-class PappServerMain(PappServerEntryHookABC):
+
+class PappServerEntryHook(PappServerEntryHookABC):
     _instance = None
-
-    _title = "Noop for testing"
-    _angularMainModule = "papp-noop.module"
-    _angularFrontendDir = "frontend/server"
-
-    def _initSelf(self):
-        self._instance = self
-
-    def load_(self)-> None:
-        self._startLaterCall = None
-
 
     @property
     def platform(self):
         return self._platform
 
-    def start(self):
+    def load(self) -> None:
         # Force migration
         from papp_noop.storage import DeclarativeBase
-        self._initialiseDb(DeclarativeBase.metadata, __file__)
-        self._setupDirs(__file__)
+        self.migrateStorageSchema(DeclarativeBase.metadata)
 
+        self._startLaterCall = None
+
+    def start(self):
 
         def started():
             self._startLaterCall = None
@@ -44,11 +35,11 @@ class PappServerMain(PappServerEntryHookABC):
 
     def stop(self):
         from papp_noop.storage import DeclarativeBase
-        DeclarativeBase.__unused= "Testing imports, after sys.path.pop() in register"
+        DeclarativeBase.__unused = "Testing imports, after sys.path.pop() in register"
 
         if self._startLaterCall:
             self._startLaterCall.cancel()
-        logger.info( "stopped")
+        logger.info("stopped")
 
     def unload(self):
         logger.info("unloaded")
@@ -68,4 +59,4 @@ class PappServerMain(PappServerEntryHookABC):
 
 
 def pappServerMain():
-    return PappServerMain._instance
+    return PappServerEntryHook._instance

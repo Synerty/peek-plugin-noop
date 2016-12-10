@@ -37,6 +37,10 @@ sed -i "s;^package_version.*=.*;package_version = '${VER}';"  setup.py
 # Update the package version
 sed -i "s;.*version.*;__version__ = '${VER}';" ${PACKAGE}/__init__.py
 
+# Update the papp_package.json
+# "version": "#PAPP_VER#",
+sed -i 's;.*"version".*:.*".*;"version":"'${VER}'";' ${PACKAGE}/papp_package.json
+
 python setup.py sdist
 
 # Reset the commit, we don't want versions in the commit

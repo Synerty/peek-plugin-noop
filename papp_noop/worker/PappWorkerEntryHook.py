@@ -7,7 +7,7 @@ from papp_base.worker.PeekWorkerProviderABC import PeekWorkerProviderABC
 
 logger = logging.getLogger(__name__)
 
-class PappWorkerMain(PappWorkerEntryHookABC):
+class PappWorkerEntryHook(PappWorkerEntryHookABC):
     _instance = None
 
     def load(self):
@@ -43,7 +43,3 @@ class PappWorkerMain(PappWorkerEntryHookABC):
     def celeryApp(self):
         from papp_noop.worker.NoopCeleryApp import celeryApp
         return celeryApp
-
-
-def getPappWorkerMain():
-    return PappWorkerMain._instance

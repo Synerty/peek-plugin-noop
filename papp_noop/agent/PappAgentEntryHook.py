@@ -2,12 +2,12 @@ import logging
 
 from twisted.internet import reactor
 
-from papp_base.agent.PappAgentEntryHookABC import PappAgentEntryPointABC
+from papp_base.agent.PappAgentEntryHookABC import PappAgentEntryHookABC
 
 logger = logging.getLogger(__name__)
 
 
-class PappAgentMain(PappAgentEntryPointABC):
+class PappAgentEntryHook(PappAgentEntryHookABC):
     _instance = None
 
     def _initSelf(self):
@@ -38,4 +38,4 @@ class PappAgentMain(PappAgentEntryPointABC):
 
 @property
 def pappAgentMain():
-    return PappAgentMain._instance
+    return PappAgentEntryHook._instance

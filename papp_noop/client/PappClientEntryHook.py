@@ -7,7 +7,7 @@ from papp_base.client.PappClientEntryHookABC import PappClientEntryHookABC
 logger = logging.getLogger(__name__)
 
 
-class PappClientMain(PappClientEntryHookABC):
+class PappClientEntryHook(PappClientEntryHookABC):
     _instance = None
 
     def _initSelf(self):

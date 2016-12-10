@@ -4,6 +4,7 @@ import {PappNoopAdminComponent} from "./papp-noop-admin.component";
 import {Routes, RouterModule} from "@angular/router";
 /**
  * Created by peek on 5/12/16.
+ *
  */
 
 export const pappRoutes: Routes = [
