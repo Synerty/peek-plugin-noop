@@ -7,7 +7,7 @@
   "papp": {
     "title": "Peek App - Noop",
     "name": "papp_noop",
-    "version": "#PAPP_VER#",
+"version":"0.0.9"
     "buildNumber": "#PAPP_BUILD#",
     "buildDate": "#BUILD_DATE#",
     "creator": "Synerty Pty Ltd",

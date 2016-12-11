@@ -9,7 +9,7 @@ from papp_noop.client.PappClientEntryHook import PappClientEntryHook
 from papp_noop.server.PappServerEntryHook import PappServerEntryHook
 from papp_noop.worker.PappWorkerEntryHook import PappWorkerEntryHook
 
-__version__ = '0.0.0'
+__version__ = '0.0.9'
 
 
 def peekServerEntryHook() -> Type[PappServerEntryHookABC]:
