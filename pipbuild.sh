@@ -41,12 +41,19 @@ sed -i "s;.*version.*;__version__ = '${VER}';" ${PACKAGE}/__init__.py
 # "version": "#PAPP_VER#",
 sed -i 's;.*"version".*:.*".*;"version":"'${VER}'";' ${PACKAGE}/papp_package.json
 
-python setup.py sdist
+# Upload to test pypi
+python setup.py sdist upload -r pypitest
 
 # Reset the commit, we don't want versions in the commit
-git reset --hard
+git commit -a -m "Updated to version ${VER}"
 
 git tag ${VER}
 git push
 git push --tags
 
+
+
+echo "If you're happy with this you can now run :"
+echo
+echo "python setup.py upload -r pypi"
+echo

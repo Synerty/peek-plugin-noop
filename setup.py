@@ -7,7 +7,7 @@ from setuptools import find_packages
 package_name = "papp_noop"
 package_version = "0.0.0"
 
-egg_info = "papp_noop.egg-info"
+egg_info = "%s.egg-info" % package_name
 if os.path.isdir(egg_info):
     shutil.rmtree(egg_info)
 
