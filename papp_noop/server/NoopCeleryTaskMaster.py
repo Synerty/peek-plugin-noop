@@ -53,9 +53,8 @@ def callWorkerDbLoop():
 
 
 def start():
-    pass
-    # for _ in range(4):
-    #     callWorkerSleepLoop()
-    #
-    # for _ in range(2):
-    #     callWorkerDbLoop()
+    for _ in range(1):
+        callWorkerSleepLoop()
+
+    for _ in range(1):
+        callWorkerDbLoop()

@@ -3,7 +3,7 @@ from time import sleep
 
 from celery.utils.log import get_task_logger
 from sqlalchemy.sql.functions import func
-from txhttputil import toStr
+from vortex.SerialiseUtil import toStr
 
 from papp_base.worker import CeleryDbConn
 from papp_noop.storage.NoopTable import NoopTable
