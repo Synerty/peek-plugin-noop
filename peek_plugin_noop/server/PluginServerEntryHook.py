@@ -2,12 +2,12 @@ import logging
 
 from twisted.internet import reactor
 
-from papp_base.server.PappServerEntryHookABC import PappServerEntryHookABC
+from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
 
 logger = logging.getLogger(__name__)
 
 
-class PappServerEntryHook(PappServerEntryHookABC):
+class PluginServerEntryHook(PluginServerEntryHookABC):
     _instance = None
 
     @property
@@ -16,7 +16,7 @@ class PappServerEntryHook(PappServerEntryHookABC):
 
     def load(self) -> None:
         # Force migration
-        from papp_noop.storage import DeclarativeBase
+        from peek_plugin_noop.storage import DeclarativeBase
         self.migrateStorageSchema(DeclarativeBase.metadata)
 
         self._startLaterCall = None
@@ -27,14 +27,14 @@ class PappServerEntryHook(PappServerEntryHookABC):
             self._startLaterCall = None
             logger.info("started")
 
-            from papp_noop.server import NoopCeleryTaskMaster
+            from peek_plugin_noop.server import NoopCeleryTaskMaster
             NoopCeleryTaskMaster.start()
 
         self._startLaterCall = reactor.callLater(3.0, started)
         logger.info("starting")
 
     def stop(self):
-        from papp_noop.storage import DeclarativeBase
+        from peek_plugin_noop.storage import DeclarativeBase
         DeclarativeBase.__unused = "Testing imports, after sys.path.pop() in register"
 
         if self._startLaterCall:
@@ -54,9 +54,9 @@ class PappServerEntryHook(PappServerEntryHookABC):
 
     @property
     def celeryApp(self):
-        from papp_noop.worker.NoopCeleryApp import celeryApp
+        from peek_plugin_noop.worker.NoopCeleryApp import celeryApp
         return celeryApp
 
 
-def pappServerMain():
-    return PappServerEntryHook._instance
+def pluginServerMain():
+    return PluginServerEntryHook._instance

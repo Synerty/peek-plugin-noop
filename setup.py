@@ -4,7 +4,7 @@ from distutils.core import setup
 
 from setuptools import find_packages
 
-package_name = "papp_noop"
+package_name = "peek_plugin_noop"
 package_version = '0.0.9'
 
 egg_info = "%s.egg-info" % package_name
@@ -34,15 +34,15 @@ def package_files(startDir,
 package_data = package_files("server_fe")
 package_data += package_files("client_fe")
 package_data += package_files("alembic")
-package_data.append("papp_changelog.json")
-package_data.append("papp_package.json")
+package_data.append("plugin_changelog.json")
+package_data.append("plugin_package.json")
 
 setup(
     name=package_name,
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     package_data={'': package_data},
     version=package_version,
-    description='Peek Platform App - This is the No Operation test/example papp',
+    description='Peek Platform App - This is the No Operation test/example plugin',
     author='Synerty',
     author_email='contact@synerty.com',
     url='https://github.com/Synerty/%s' % package_version,

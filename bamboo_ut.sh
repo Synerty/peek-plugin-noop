@@ -4,19 +4,19 @@ set -o nounset
 set -o errexit
 set -x
 
-PAPP_NAME="papp_noop"
+PLUGIN_NAME="plugin_noop"
 
 # activate virtualenv
 export PATH=/home/bamboo/pyenvs/py_ut/bin:$PATH
 
 # Define python path
-PYTHONPATH="`pwd`/peek_papp/src"
+PYTHONPATH="`pwd`/peek_plugin/src"
 PYTHONPATH="$PYTHONPATH:`pwd`/rapui/src"
-PYTHONPATH="$PYTHONPATH:`pwd`/${PAPP_NAME}/src"
+PYTHONPATH="$PYTHONPATH:`pwd`/${PLUGIN_NAME}/src"
 export PYTHONPATH
 
 
-FILES=`find $PAPP_NAME -name "*.py" -exec grep -l unittest.TestCase {} \;`
+FILES=`find $PLUGIN_NAME -name "*.py" -exec grep -l unittest.TestCase {} \;`
 echo "Running unit tests in files:"
 echo $FILES
 

@@ -1,19 +1,19 @@
 // This file is parsed with the jsoncfg python package
 // It supports comments like this one.
 
-// Directories are the location of papp_package.json
+// Directories are the location of plugin_package.json
 {
   // Some details about this Peek App
-  "papp": {
+  "plugin": {
     "title": "Peek App - Noop",
-    "name": "papp_noop",
+    "name": "plugin_noop",
 "version":"0.0.9"
-    "buildNumber": "#PAPP_BUILD#",
+    "buildNumber": "#PLUGIN_BUILD#",
     "buildDate": "#BUILD_DATE#",
     "creator": "Synerty Pty Ltd",
     "website": "www.synerty.com"
   },
-  // The Peek Platform services that this papp needs to run
+  // The Peek Platform services that this plugin needs to run
   "requiresServices": [
     "server",
     "worker",
@@ -26,7 +26,7 @@
   // EG package==0.3.0
   // NO DEPENDENCY SUPPORT AT PRESENT
   "dependsOn": [
-    // EG "papp_noop"
+    // EG "peek_plugin_noop"
   ],
   // Settings specific to the peek_client service
   "client": {
@@ -35,8 +35,8 @@
     "angularFrontendDir": "client_fe",
     // The main module for the angular2 route
     // This must be in the "angularFrontendDir"
-    // EG "papp-noop.module"
-    "angularMainModule": "papp-noop.module"
+    // EG "plugin-noop.module"
+    "angularMainModule": "plugin-noop.module"
   },
   // Settings specific to the peek_server service
   "server": {
@@ -45,8 +45,8 @@
     "angularFrontendDir": "server_fe",
     // The main module for the angular2 route
     // This must be in the "angularFrontendDir"
-    // EG "papp-noop.module"
-    "angularMainModule": "papp-noop.module"
+    // EG "plugin-noop.module"
+    "angularMainModule": "plugin-noop.module"
   },
   // Settings specific to the database service
   // The database is migrated by the peek_server and used from both the server and worker

@@ -15,7 +15,7 @@ REPEAT = 0.5
 def callWorkerSleepLoop():
     # logger.info("Sleep Only Task - Ticking along")
 
-    from papp_noop.worker.NoopWorkerTask import task1
+    from peek_plugin_noop.worker.NoopWorkerTask import task1
     startTime = datetime.utcnow()
 
     d = task1.delay("Some task arg str")
@@ -36,7 +36,7 @@ def callWorkerSleepLoop():
 def callWorkerDbLoop():
     # logger.info("DB Update Task - Ticking along")
 
-    from papp_noop.worker.NoopWorkerTask import dbTask
+    from peek_plugin_noop.worker.NoopWorkerTask import dbTask
     startTime = datetime.utcnow()
     d = dbTask.delay("db update task str arg")
 

@@ -2,12 +2,12 @@ import logging
 
 from twisted.internet import reactor
 
-from papp_base.worker.PappWorkerEntryHookABC import PappWorkerEntryHookABC
-from papp_base.worker.PeekWorkerPlatformHookABC import PeekWorkerPlatformHookABC
+from peek_plugin_base.worker.PluginWorkerEntryHookABC import PluginWorkerEntryHookABC
+from peek_plugin_base.worker.PeekWorkerPlatformHookABC import PeekWorkerPlatformHookABC
 
 logger = logging.getLogger(__name__)
 
-class PappWorkerEntryHook(PappWorkerEntryHookABC):
+class PluginWorkerEntryHook(PluginWorkerEntryHookABC):
 
     @property
     def platform(self) -> PeekWorkerPlatformHookABC:
@@ -34,9 +34,9 @@ class PappWorkerEntryHook(PappWorkerEntryHookABC):
 
     @property
     def celeryAppIncludes(self):
-        return ["papp_noop.worker.NoopWorkerTask"]
+        return ["peek_plugin_noop.worker.NoopWorkerTask"]
 
     @property
     def celeryApp(self):
-        from papp_noop.worker.NoopCeleryApp import celeryApp
+        from peek_plugin_noop.worker.NoopCeleryApp import celeryApp
         return celeryApp

@@ -13,7 +13,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.schema import MetaData
 
-metadata = MetaData(schema="papp_noop")
+metadata = MetaData(schema="peek_plugin_noop")
 DeclarativeBase = declarative_base(metadata=metadata)
 
 from . import NoopTable

@@ -2,16 +2,16 @@ import logging
 
 from twisted.internet import reactor
 
-from papp_base.agent.PappAgentEntryHookABC import PappAgentEntryHookABC
-from papp_base.agent.PeekAgentPlatformHookABC import PeekAgentPlatformHookABC
+from peek_plugin_base.client.PluginClientEntryHookABC import PluginClientEntryHookABC
+from peek_plugin_base.client.PeekClientPlatformHookABC import PeekClientPlatformHookABC
 
 logger = logging.getLogger(__name__)
 
 
-class PappAgentEntryHook(PappAgentEntryHookABC):
+class PluginClientEntryHook(PluginClientEntryHookABC):
 
     @property
-    def platform(self) -> PeekAgentPlatformHookABC:
+    def platform(self) -> PeekClientPlatformHookABC:
         return self._platform
 
     def load(self):
@@ -32,3 +32,4 @@ class PappAgentEntryHook(PappAgentEntryHookABC):
 
     def unload(self):
         logger.info("unloaded")
+

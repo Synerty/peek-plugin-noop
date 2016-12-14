@@ -5,9 +5,9 @@ from celery.utils.log import get_task_logger
 from sqlalchemy.sql.functions import func
 from vortex.SerialiseUtil import toStr
 
-from papp_base.worker import CeleryDbConn
-from papp_noop.storage.NoopTable import NoopTable
-from papp_noop.worker.NoopCeleryApp import celeryApp
+from peek_plugin_base.worker import CeleryDbConn
+from peek_plugin_noop.storage.NoopTable import NoopTable
+from peek_plugin_noop.worker.NoopCeleryApp import celeryApp
 from txcelery.defer import CeleryClient
 
 logger = get_task_logger(__name__)

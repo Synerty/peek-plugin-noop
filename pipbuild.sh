@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PACKAGE="papp_noop"
+PACKAGE="peek_plugin_noop"
 
 set -o nounset
 set -o errexit
@@ -37,9 +37,9 @@ sed -i "s;^package_version.*=.*;package_version = '${VER}';"  setup.py
 # Update the package version
 sed -i "s;.*version.*;__version__ = '${VER}';" ${PACKAGE}/__init__.py
 
-# Update the papp_package.json
-# "version": "#PAPP_VER#",
-sed -i 's;.*"version".*:.*".*;"version":"'${VER}'";' ${PACKAGE}/papp_package.json
+# Update the plugin_package.json
+# "version": "#PLUGIN_VER#",
+sed -i 's;.*"version".*:.*".*;"version":"'${VER}'";' ${PACKAGE}/plugin_package.json
 
 # Upload to test pypi
 python setup.py sdist upload -r pypitest

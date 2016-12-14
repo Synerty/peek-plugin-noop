@@ -1,19 +1,20 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
-import {PappNoopClientComponent} from "./papp-noop-client.component";
+import {PluginNoopAdminComponent} from "./plugin-noop-admin.component";
 import {Routes, RouterModule} from "@angular/router";
 /**
  * Created by peek on 5/12/16.
+ *
  */
 
-export const pappRoutes: Routes = [
+export const pluginRoutes: Routes = [
     {
         path: '',
-        component: PappNoopClientComponent
+        component: PluginNoopAdminComponent
     },
     {
         path: '**',
-        component: PappNoopClientComponent
+        component: PluginNoopAdminComponent
     }
 
 ];
@@ -21,11 +22,11 @@ export const pappRoutes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forChild(pappRoutes)],
+        RouterModule.forChild(pluginRoutes)],
     exports: [],
     providers: [],
-    declarations: [PappNoopClientComponent]
+    declarations: [PluginNoopAdminComponent]
 })
-export default class PappNoopClientModule {
+export default class PluginNoopAdminModule {
 
 }

@@ -4,7 +4,7 @@ set -o nounset
 set -o errexit
 set -x
 
-PAPP_NAME='papp_noop'
+PLUGIN_NAME='plugin_noop'
 
 function convertBambooDate() {
 # EG s="2010-01-01T01:00:00.000+01:00"
@@ -27,7 +27,7 @@ fi
 echo "New version is $VER"
 echo "New build is $BUILD"
 
-TAR_DIR="${PAPP_NAME}_$VER#$BUILD"
+TAR_DIR="${PLUGIN_NAME}_$VER#$BUILD"
 DIR="deploy/$TAR_DIR"
 mkdir -p $DIR/cpython
 
@@ -35,10 +35,10 @@ echo "New version is $VER"
 
 
 # Source
-cp -pr ${PAPP_NAME}/alembic $DIR/cpython
-cp -pr ${PAPP_NAME}/src/${PAPP_NAME} $DIR/cpython
-cp -pr ${PAPP_NAME}/papp_changelog.json $DIR
-cp -pr ${PAPP_NAME}/papp_version.json $DIR
+cp -pr ${PLUGIN_NAME}/alembic $DIR/cpython
+cp -pr ${PLUGIN_NAME}/src/${PLUGIN_NAME} $DIR/cpython
+cp -pr ${PLUGIN_NAME}/plugin_changelog.json $DIR
+cp -pr ${PLUGIN_NAME}/plugin_version.json $DIR
 
 
 find $DIR -iname .git -exec rm -rf {} \; || true
@@ -53,14 +53,14 @@ find $DIR -iname ".idea" -exec rm -rf {} \; || true
 
 # Apply version number
 
-for f in `grep -l -r  '#PAPP_VER#' .`; do
+for f in `grep -l -r  '#PLUGIN_VER#' .`; do
     echo "Updating version in file $f"
-    sed -i "s/#PAPP_VER#/$VER/g" $f
+    sed -i "s/#PLUGIN_VER#/$VER/g" $f
 done
 
-for f in `grep -l -r  '#PAPP_BUILD#' .`; do
+for f in `grep -l -r  '#PLUGIN_BUILD#' .`; do
     echo "Updating build in file $f"
-    sed -i "s/#PAPP_BUILD#/$BUILD/g" $f
+    sed -i "s/#PLUGIN_BUILD#/$BUILD/g" $f
 done
 
 for f in `grep -l -r  '#BUILD_DATE#' .`; do
@@ -91,9 +91,9 @@ popd
 ## The worker should never perform an upgrade
 #echo "Removing non worker source files"
 #pushd $DIR/pypy
-#rm -rf $PAPP_NAME/agent
-#rm -rf $PAPP_NAME/client_fe
-#rm -rf $PAPP_NAME/server_fe
+#rm -rf $PLUGIN_NAME/agent
+#rm -rf $PLUGIN_NAME/client_fe
+#rm -rf $PLUGIN_NAME/server_fe
 #rm -rf alembic
 #popd
 

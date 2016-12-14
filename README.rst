@@ -1,1 +1,1 @@
-Papp Noop README
+Plugin Noop README
