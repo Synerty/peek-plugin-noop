@@ -4,7 +4,7 @@ from distutils.core import setup
 
 from setuptools import find_packages
 
-package_name = "peek_plugin_noop"
+package_name = "peek-plugin-noop"
 package_version = '0.0.9'
 
 egg_info = "%s.egg-info" % package_name
@@ -41,8 +41,9 @@ setup(
     name=package_name,
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     package_data={'': package_data},
+    install_requires=['peek-plugin-base'],
     version=package_version,
-    description='Peek Platform App - This is the No Operation test/example plugin',
+    description='Peek Plugin - Noop - This is the No Operation test/example plugin',
     author='Synerty',
     author_email='contact@synerty.com',
     url='https://github.com/Synerty/%s' % package_version,
