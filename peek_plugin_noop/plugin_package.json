@@ -6,7 +6,7 @@
   // Some details about this Peek App
   "plugin": {
     "title": "Peek App - Noop",
-    "name": "plugin_noop",
+    "name": "peek-plugin-noop", // Must match package name
     "version":"0.0.11",
     "buildNumber": "#PLUGIN_BUILD#",
     "buildDate": "#BUILD_DATE#",
