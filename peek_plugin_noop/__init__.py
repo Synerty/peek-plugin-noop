@@ -9,7 +9,7 @@ from peek_plugin_noop.client.PluginClientEntryHook import PluginClientEntryHook
 from peek_plugin_noop.server.PluginServerEntryHook import PluginServerEntryHook
 from peek_plugin_noop.worker.PluginWorkerEntryHook import PluginWorkerEntryHook
 
-__version__ = '0.0.11'
+__version__ = '0.0.12'
 
 
 def peekServerEntryHook() -> Type[PluginServerEntryHookABC]:
