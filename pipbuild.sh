@@ -39,7 +39,7 @@ sed -i "s;.*version.*;__version__ = '${VER}';" ${PACKAGE}/__init__.py
 
 # Update the plugin_package.json
 # "version": "#PLUGIN_VER#",
-sed -i 's;.*"version".*:.*".*;"version":"'${VER}'";' ${PACKAGE}/plugin_package.json
+sed -i 's;.*"version".*:.*".*;    "version":"'${VER}'",;' ${PACKAGE}/plugin_package.json
 
 # Upload to test pypi
 python setup.py sdist upload -r pypitest
