@@ -6,7 +6,7 @@
   // Some details about this Peek App
   "plugin": {
     "title": "Peek App - Noop",
-    "name": "peek-plugin-noop", // Must match package name
+    "packageName": "peek_plugin_noop", // The name of the root python package
     "version":"0.0.12",
     "buildNumber": "#PLUGIN_BUILD#",
     "buildDate": "#BUILD_DATE#",
