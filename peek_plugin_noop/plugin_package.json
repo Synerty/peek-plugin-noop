@@ -7,7 +7,7 @@
   "plugin": {
     "title": "Peek App - Noop",
     "packageName": "peek_plugin_noop", // The name of the root python package
-    "version":"0.0.16",
+    "version":"0.0.17",
     "buildNumber": "#PLUGIN_BUILD#",
     "buildDate": "#BUILD_DATE#",
     "creator": "Synerty Pty Ltd",
