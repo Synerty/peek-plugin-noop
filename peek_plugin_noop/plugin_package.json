@@ -21,13 +21,6 @@
     "client",
     "storage"
   ],
-  // Depencency versions to come, based on https://www.python.org/dev/peps/pep-0440
-  // EG package>=0.2,<0.3
-  // EG package==0.3.0
-  // NO DEPENDENCY SUPPORT AT PRESENT
-  "dependsOn": [
-    // EG "peek_plugin_noop"
-  ],
   // Settings specific to the peek_client service
   "client": {
     // The directory where the angular2 route is for the client site
