@@ -14,11 +14,7 @@ logger = logging.getLogger(__name__)
 class PluginServerEntryHook(PluginServerEntryHookABC,
                             PluginServerStorageEntryHookMixin,
                             PluginServerWorkerEntryHookMixin):
-    _instance = None
 
-    @property
-    def platform(self):
-        return self._platform
 
     def load(self) -> None:
         # Force migration
@@ -61,7 +57,3 @@ class PluginServerEntryHook(PluginServerEntryHookABC,
     def celeryApp(self):
         from peek_plugin_noop.worker.NoopCeleryApp import celeryApp
         return celeryApp
-
-
-def pluginServerMain():
-    return PluginServerEntryHook._instance

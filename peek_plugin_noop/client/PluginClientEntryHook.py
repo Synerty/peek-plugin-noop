@@ -1,19 +1,12 @@
 import logging
 
-from twisted.internet import reactor
-
 from peek_plugin_base.client.PluginClientEntryHookABC import PluginClientEntryHookABC
-from peek_plugin_base.client.PeekClientPlatformHookABC import PeekClientPlatformHookABC
+from twisted.internet import reactor
 
 logger = logging.getLogger(__name__)
 
 
 class PluginClientEntryHook(PluginClientEntryHookABC):
-
-    @property
-    def platform(self) -> PeekClientPlatformHookABC:
-        return self._platform
-
     def load(self):
         logger.debug("loaded")
 
@@ -32,4 +25,3 @@ class PluginClientEntryHook(PluginClientEntryHookABC):
 
     def unload(self):
         logger.info("unloaded")
-
