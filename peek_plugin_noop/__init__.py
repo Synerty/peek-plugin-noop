@@ -4,10 +4,11 @@ from peek_plugin_base.agent.PluginAgentEntryHookABC import PluginAgentEntryHookA
 from peek_plugin_base.client.PluginClientEntryHookABC import PluginClientEntryHookABC
 from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
 from peek_plugin_base.worker.PluginWorkerEntryHookABC import PluginWorkerEntryHookABC
-from peek_plugin_noop.agent.PluginAgentEntryHook import PluginAgentEntryHook
 from peek_plugin_noop.client.PluginClientEntryHook import PluginClientEntryHook
 from peek_plugin_noop.server.PluginServerEntryHook import PluginServerEntryHook
 from peek_plugin_noop.worker.PluginWorkerEntryHook import PluginWorkerEntryHook
+
+from peek_plugin_noop._private.agent.PluginAgentEntryHook import PluginAgentEntryHook
 
 __version__ = '0.0.18'
 

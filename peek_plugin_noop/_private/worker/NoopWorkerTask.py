@@ -2,13 +2,13 @@ from datetime import datetime
 from time import sleep
 
 from celery.utils.log import get_task_logger
-from sqlalchemy.sql.functions import func
-from vortex.SerialiseUtil import toStr
-
 from peek_plugin_base.worker import CeleryDbConn
 from peek_plugin_noop.storage.NoopTable import NoopTable
-from peek_plugin_noop.worker.NoopCeleryApp import celeryApp
+from sqlalchemy.sql.functions import func
 from txcelery.defer import CeleryClient
+from vortex.SerialiseUtil import toStr
+
+from peek_plugin_noop._private.worker.NoopCeleryApp import celeryApp
 
 logger = get_task_logger(__name__)
 

@@ -25,7 +25,7 @@
   "client": {
     // The directory where the angular2 route is for the client site
     // EG "frontend/client"
-    "angularFrontendDir": "client_fe",
+    "angularFrontendDir": "_private/client_fe",
     // The main module for the angular2 route
     // This must be in the "angularFrontendDir"
     // EG "plugin-noop.module"
@@ -35,7 +35,7 @@
   "server": {
     // The directory where the angular2 route is for server admin site
     // EG "frontend/client"
-    "angularFrontendDir": "server_fe",
+    "angularFrontendDir": "_private/server_fe",
     // The main module for the angular2 route
     // This must be in the "angularFrontendDir"
     // EG "plugin-noop.module"
@@ -46,7 +46,7 @@
   // services
   "storage": {
     // The alembic directory where the database schema migration scripts are stored
-    "alembicDir": "alembic"
+    "alembicDir": "_private/alembic"
   },
   // Settings specific to the peek_worker service
   "worker": {

@@ -32,5 +32,5 @@ class PluginWorkerEntryHook(PluginWorkerEntryHookABC):
 
     @property
     def celeryApp(self):
-        from peek_plugin_noop.worker.NoopCeleryApp import celeryApp
+        from peek_plugin_noop._private.worker.NoopCeleryApp import celeryApp
         return celeryApp

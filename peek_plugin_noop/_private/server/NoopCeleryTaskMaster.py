@@ -2,9 +2,8 @@ import logging
 from datetime import datetime
 
 from twisted.internet import reactor
-
-from vortex.SerialiseUtil import fromStr, T_DATETIME
 from txhttputil.util.DeferUtil import printFailure
+from vortex.SerialiseUtil import fromStr, T_DATETIME
 
 logger = logging.getLogger(__name__)
 
@@ -15,7 +14,7 @@ REPEAT = 0.5
 def callWorkerSleepLoop():
     # logger.info("Sleep Only Task - Ticking along")
 
-    from peek_plugin_noop.worker.NoopWorkerTask import task1
+    from peek_plugin_noop._private.worker.NoopWorkerTask import task1
     startTime = datetime.utcnow()
 
     d = task1.delay("Some task arg str")
@@ -36,7 +35,7 @@ def callWorkerSleepLoop():
 def callWorkerDbLoop():
     # logger.info("DB Update Task - Ticking along")
 
-    from peek_plugin_noop.worker.NoopWorkerTask import dbTask
+    from peek_plugin_noop._private.worker.NoopWorkerTask import dbTask
     startTime = datetime.utcnow()
     d = dbTask.delay("db update task str arg")
 
