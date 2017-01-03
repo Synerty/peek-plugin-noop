@@ -15,7 +15,7 @@ from sqlalchemy import Integer, String
 from sqlalchemy.sql.schema import Index
 from vortex.Tuple import Tuple, addTupleType, TupleField
 
-from peek_plugin_noop._private.storage import DeclarativeBase
+from peek_plugin_noop._private.storage.DeclarativeBase import DeclarativeBase
 
 logger = logging.getLogger(__name__)
 

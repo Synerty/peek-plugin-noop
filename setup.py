@@ -31,9 +31,9 @@ def package_files(startDir,
     return paths
 
 
-package_data = package_files("server_fe")
-package_data += package_files("client_fe")
-package_data += package_files("alembic")
+package_data = package_files("_private/server_fe")
+package_data += package_files("_private/client_fe")
+package_data += package_files("_private/alembic")
 package_data.append("plugin_changelog.json")
 package_data.append("plugin_package.json")
 

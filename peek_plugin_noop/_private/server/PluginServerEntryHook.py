@@ -1,18 +1,18 @@
 import logging
 
 from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
-from peek_plugin_base.server.PluginServerStorageEntryHookMixin import \
-    PluginServerStorageEntryHookMixin
-from peek_plugin_base.server.PluginServerWorkerEntryHookMixin import \
-    PluginServerWorkerEntryHookMixin
+from peek_plugin_base.server.PluginServerStorageEntryHookABC import \
+    PluginServerStorageEntryHookABC
+from peek_plugin_base.server.PluginServerWorkerEntryHookABC import \
+    PluginServerWorkerEntryHookABC
 from twisted.internet import reactor
 
 logger = logging.getLogger(__name__)
 
 
 class PluginServerEntryHook(PluginServerEntryHookABC,
-                            PluginServerStorageEntryHookMixin,
-                            PluginServerWorkerEntryHookMixin):
+                            PluginServerStorageEntryHookABC,
+                            PluginServerWorkerEntryHookABC):
 
 
     def load(self) -> None:
@@ -43,14 +43,14 @@ class PluginServerEntryHook(PluginServerEntryHookABC,
     def unload(self):
         logger.info("unloaded")
 
-    ###### Implement PluginServerStorageEntryHookMixin
+    ###### Implement PluginServerStorageEntryHookABC
 
     @property
     def dbMetadata(self):
         from peek_plugin_noop._private.storage import DeclarativeBase
         return DeclarativeBase.metadata
 
-    ###### Implement PluginServerWorkerEntryHookMixin
+    ###### Implement PluginServerWorkerEntryHookABC
 
     @property
     def celeryApp(self):

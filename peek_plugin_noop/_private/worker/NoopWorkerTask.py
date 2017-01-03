@@ -3,7 +3,7 @@ from time import sleep
 
 from celery.utils.log import get_task_logger
 from peek_plugin_base.worker import CeleryDbConn
-from peek_plugin_noop.storage.NoopTable import NoopTable
+from peek_plugin_noop._private.storage.NoopTable import NoopTable
 from sqlalchemy.sql.functions import func
 from txcelery.defer import CeleryClient
 from vortex.SerialiseUtil import toStr
