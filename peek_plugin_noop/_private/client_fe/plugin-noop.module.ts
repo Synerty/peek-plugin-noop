@@ -2,7 +2,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {PluginNoopClientComponent} from "./plugin-noop-client.component";
 import {Routes, RouterModule} from "@angular/router";
-import {PeekPluginMenuI, PeekPluginMenuItem} from "interfaces/PeekPluginMenuItem";
+// import {PeekPluginMenuI, PeekPluginMenuItem} from "interfaces/PeekPluginMenuItem";
 /**
  * Created by peek on 5/12/16.
  */
@@ -11,11 +11,13 @@ import {PeekPluginMenuI, PeekPluginMenuItem} from "interfaces/PeekPluginMenuItem
 export const pluginRoutes: Routes = [
     {
         path: '',
-        component: PluginNoopClientComponent
+        component: PluginNoopClientComponent,
+        data : {title:"noop home route"}
     },
     {
         path: '**',
-        component: PluginNoopClientComponent
+        component: PluginNoopClientComponent,
+        data : {title:"noop catch all route"}
     }
 
 ];
@@ -28,12 +30,15 @@ export const pluginRoutes: Routes = [
     providers: [],
     declarations: [PluginNoopClientComponent]
 })
-export default class PluginNoopClientModule implements PeekPluginMenuI {
-    menuRoot(): PeekPluginMenuItem {
-        return {
-            name: "Noop",
-            url: "subItems",
-            subItems: []
-        }
-    }
+export default class PluginNoopClientModule
+// implements PeekPluginMenuI
+{
+    // menuRoot(): PeekPluginMenuItem
+    // {
+    //     return {
+    //         name: "Noop",
+    //         url: "subItems",
+    //         subItems: []
+    //     }
+    // }
 }
