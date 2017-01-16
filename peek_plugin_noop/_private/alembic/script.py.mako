@@ -1,6 +1,6 @@
 """${message}
 
-Peek App Database Migration Script
+Peek Plugin Database Migration Script
 
 Revision ID: ${up_revision}
 Revises: ${down_revision | comma,n}
