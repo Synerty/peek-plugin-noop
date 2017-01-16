@@ -1,6 +1,7 @@
 import logging
 
 from peek_plugin_base.worker.PluginWorkerEntryHookABC import PluginWorkerEntryHookABC
+from peek_plugin_noop._private.worker import NoopWorkerTask
 from twisted.internet import reactor
 
 logger = logging.getLogger(__name__)
@@ -28,7 +29,7 @@ class PluginWorkerEntryHook(PluginWorkerEntryHookABC):
 
     @property
     def celeryAppIncludes(self):
-        return ["peek_plugin_noop.worker.NoopWorkerTask"]
+        return [NoopWorkerTask.__name__]
 
     @property
     def celeryApp(self):
