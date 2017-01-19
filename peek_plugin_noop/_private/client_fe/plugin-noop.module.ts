@@ -2,7 +2,7 @@ import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
 import {PluginNoopClientComponent} from "./plugin-noop-client.component";
 import {Routes, RouterModule} from "@angular/router";
-import {PeekRouterModule} from "@synerty/peek-web-ns";
+import {PeekModuleFactory} from "@synerty/peek-web-ns";
 // import {PeekPluginMenuI, PeekPluginMenuItem} from "interfaces/PeekPluginMenuItem";
 /**
  * Created by peek on 5/12/16.
@@ -26,7 +26,7 @@ export const pluginRoutes: Routes = [
 @NgModule({
     imports: [
         CommonModule,
-        PeekRouterModule.forChild(pluginRoutes)],
+        PeekModuleFactory.RouterModule.forChild(pluginRoutes)],
     exports: [],
     providers: [],
     declarations: [PluginNoopClientComponent]
