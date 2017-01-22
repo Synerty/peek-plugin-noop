@@ -31,7 +31,7 @@ class NoopTable(Tuple, DeclarativeBase):
     __tablename__ = 'NoopTable'
 
     id = Column(Integer, primary_key=True)
-    string1 = Column(String)
+    string1 = Column(String(50))
 
     nonDbField = TupleField()
 
