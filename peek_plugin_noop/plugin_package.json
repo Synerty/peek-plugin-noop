@@ -23,6 +23,7 @@
   ],
   // Settings specific to the peek_client service
   "client": {
+    "enableAngularFrontend" :true,
     // The directory where the angular2 route is for the client site
     // EG "frontend/client"
     "angularFrontendDir": "_private/client_fe",
@@ -33,6 +34,7 @@
   },
   // Settings specific to the peek_server service
   "server": {
+    "enableAngularFrontend" :true,
     // The directory where the angular2 route is for server admin site
     // EG "frontend/client"
     "angularFrontendDir": "_private/server_fe",
