@@ -11,10 +11,6 @@ export const pluginRoutes: Routes = [
     {
         path: '',
         component: PluginNoopAdminComponent
-    },
-    {
-        path: '**',
-        component: PluginNoopAdminComponent
     }
 
 ];
