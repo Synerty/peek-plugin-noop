@@ -30,7 +30,7 @@ class NoopTable(Tuple, DeclarativeBase):
     __tupleType__ = 'peek_plugin_noop.NoopTable'
     __tablename__ = 'NoopTable'
 
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
     string1 = Column(String(50))
 
     nonDbField = TupleField()
