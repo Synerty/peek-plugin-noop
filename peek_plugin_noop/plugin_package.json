@@ -30,7 +30,11 @@
     // The main module for the angular2 route
     // This must be in the "angularFrontendDir"
     // EG "plugin-noop.module"
-    "angularMainModule": "plugin-noop.module"
+    "angularMainModule": "plugin-noop.module",
+    // The path for the plugin icon
+    // This must be relative to  "angularFrontendDir"
+    // EG "plugin_icon.png"
+    "angularPluginIcon": "plugin_icon.png"
   },
   // Settings specific to the peek_server service
   "server": {
