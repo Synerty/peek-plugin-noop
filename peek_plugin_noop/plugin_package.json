@@ -5,7 +5,7 @@
 {
   // Some details about this Peek App
   "plugin": {
-    "title": "Peek - Plugin Example (noop)",
+    "title": "Testing Noop",
     "packageName": "peek_plugin_noop", // The name of the root python package
     "version":"0.0.18",
     "buildNumber": "#PLUGIN_BUILD#",
