@@ -24,13 +24,13 @@ class PluginServerEntryHook(PluginServerEntryHookABC,
 
         def started():
             self._startLaterCall = None
-            logger.info("started")
+            logger.debug("started")
 
             from peek_plugin_noop._private.server import NoopCeleryTaskMaster
             NoopCeleryTaskMaster.start()
 
         self._startLaterCall = reactor.callLater(3.0, started)
-        logger.info("starting")
+        logger.debug("starting")
 
     def stop(self):
         from peek_plugin_noop._private.storage import DeclarativeBase
@@ -38,10 +38,10 @@ class PluginServerEntryHook(PluginServerEntryHookABC,
 
         if self._startLaterCall:
             self._startLaterCall.cancel()
-        logger.info("stopped")
+        logger.debug("stopped")
 
     def unload(self):
-        logger.info("unloaded")
+        logger.debug("unloaded")
 
     ###### Implement PluginServerStorageEntryHookABC
 

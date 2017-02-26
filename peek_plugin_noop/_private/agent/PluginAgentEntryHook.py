@@ -14,15 +14,15 @@ class PluginAgentEntryHook(PluginAgentEntryHookABC):
     def start(self):
         def started():
             self._startLaterCall = None
-            logger.info("started")
+            logger.debug("started")
 
         self._startLaterCall = reactor.callLater(3.0, started)
-        logger.info("starting")
+        logger.debug("starting")
 
     def stop(self):
         if self._startLaterCall:
             self._startLaterCall.cancel()
-        logger.info("stopped")
+        logger.debug("stopped")
 
     def unload(self):
-        logger.info("unloaded")
+        logger.debug("unloaded")
