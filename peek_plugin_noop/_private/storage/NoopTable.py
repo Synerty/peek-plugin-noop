@@ -15,6 +15,7 @@ from sqlalchemy import Integer, String
 from sqlalchemy.sql.schema import Index
 from vortex.Tuple import Tuple, addTupleType, TupleField
 
+from peek_plugin_noop._private.PluginNames import noopTuplePrefix
 from peek_plugin_noop._private.storage.DeclarativeBase import DeclarativeBase
 
 logger = logging.getLogger(__name__)
@@ -27,7 +28,7 @@ class NoopTable(Tuple, DeclarativeBase):
     This table doesn't do anything
 
     """
-    __tupleType__ = 'peek_plugin_noop.NoopTable'
+    __tupleType__ = noopTuplePrefix + 'NoopTable'
     __tablename__ = 'NoopTable'
 
     id = Column(Integer, primary_key=True, autoincrement=True)

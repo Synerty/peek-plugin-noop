@@ -1,9 +1,6 @@
 import {PeekComponent} from "@synerty/peek-web-ns";
-import {
-    VortexService,
-    ComponentLifecycleEventEmitter,
-    TupleLoader
-} from "@synerty/vortexjs";
+import {ComponentLifecycleEventEmitter, VortexService} from "@synerty/vortexjs";
+import {noopFilt} from "./plugin-noop-names";
 
 @PeekComponent({
     selector: 'plugin-noop-admin',
@@ -13,12 +10,11 @@ import {
 export class PluginNoopClientComponent extends ComponentLifecycleEventEmitter {
 
     date: string = "No data yet";
-    stopped : boolean = false;
+    stopped: boolean = false;
 
-    private filt = {
-        "plugin": "peek_plugin_noop",
+    private filt = extend({
         "key": "sendDate"
-    };
+    }, noopFilt);
 
     constructor(vortexService: VortexService) {
         super();
@@ -31,7 +27,9 @@ export class PluginNoopClientComponent extends ComponentLifecycleEventEmitter {
 
             });
 
-        this.onDestroyEvent.subscribe(() => {this.stopped=true;});
+        this.onDestroyEvent.subscribe(() => {
+            this.stopped = true;
+        });
 
         let loadAgain = () => {
             if (this.stopped)

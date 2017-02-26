@@ -2,8 +2,10 @@ from datetime import datetime
 
 from vortex.handler.ModelHandler import ModelHandler
 
-sendDateFilt = {"plugin": "peek_plugin_noop",
-                "key": "sendDate"}
+from peek_plugin_noop._private.PluginNames import noopFilt
+
+sendDateFilt = {"key": "sendDate"}
+sendDateFilt.update(noopFilt)
 
 
 class SendDateHandler(ModelHandler):
