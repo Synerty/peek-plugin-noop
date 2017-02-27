@@ -24,6 +24,20 @@
   ],
   // Settings specific to the peek_client service
   "client": {
+    // Show Plugin Home Link
+    // Show the plugin as an app on the home screen
+    "showPluginHomeLink": true,
+
+    // Show Plugin In Title Bar
+    // Show the plugin as an app on the home screen
+    "showPluginInTitleBar": false,
+    // True for left, false, for right
+    "titleBarLeft": false,
+    // The text on the button
+    "titleBarText": "Noop",
+
+    // Enable the Angular Frontend.
+    // This option enables the user interface.
     "enableAngularFrontend": true,
     // The directory where the angular2 route is for the client site
     // EG "frontend/client"
@@ -62,10 +76,15 @@
     // The path for the plugin icon
     // This must be relative to  "angularFrontendDir"
     // EG "plugin_icon.png"
-    "angularPluginIcon": "plugin_icon.png"
+    "angularPluginIcon": "/assets/peek_plugin_noop/plugin_icon.png"
   },
   // Settings specific to the peek_server service
   "server": {
+    // Show Plugin Home Link
+    // Show the plugin in the list of plugins on the admin screen
+    "showPluginHomeLink": true,
+    // Enable the Angular Frontend.
+    // This option enables the user interface.
     "enableAngularFrontend": true,
     // The directory where the angular2 route is for server admin site
     // EG "frontend/client"

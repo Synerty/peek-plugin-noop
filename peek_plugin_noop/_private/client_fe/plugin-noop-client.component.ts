@@ -1,6 +1,7 @@
 import {PeekComponent} from "@synerty/peek-web-ns";
 import {ComponentLifecycleEventEmitter, VortexService} from "@synerty/vortexjs";
 import {noopFilt} from "./plugin-noop-names";
+import {extend} from "@synerty/vortexjs";
 
 @PeekComponent({
     selector: 'plugin-noop-admin',
