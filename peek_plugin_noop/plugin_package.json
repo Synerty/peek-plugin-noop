@@ -39,17 +39,26 @@
     // Enable the Angular Frontend.
     // This option enables the user interface.
     "enableAngularFrontend": true,
-    // The directory where the angular2 route is for the client site
-    // EG "frontend/client"
-    "angularFrontendDir": "_private/client_fe",
+    // The directory is where the angular2 route is for the client site
+    // This will be lazy loaded
+    // EG "_private/client_fe_app"
+    "angularFrontendAppDir": "_private/client_fe_app",
+    // The directory is where the angular2 module is for the client site
+    // This will be linked in under node_modules/<plugin_name>_client
+    // EG "_private/client_fe_module"
+    "angularFrontendModuleDir": "_private/client_fe_module",
+    // The directory is where static assests live
+    // This will be linked to app/assets/<plugin_name>
+    // EG "_private/client_fe_assets"
+    "angularFrontendAssetsDir": "_private/client_fe_assets",
     // (Optional)
     // The main module for the angular2 route
-    // This must be in the "angularFrontendDir"
+    // This must be in the "angularFrontendAppDir"
     // EG "plugin-noop.module"
     // NOTE, This class must be the default export, "export default class ..."
     "angularMainModule": "plugin-noop.module",
     // (Optional)
-    // The root module for this peek plugin, relative to angularFrontendDir
+    // The root module for this peek plugin, relative to angularFrontendModuleDir
     // This module will be loaded once with the main angular app, outside of the
     // lazy loaded plugin main module.
     // Use this if you need to always have some code active, angular2 garbage collects
@@ -60,7 +69,7 @@
       "class": "PluginNoopClientRootModule"
     },
     // (Optional)
-    // The root service for this peek plugin, relative to angularFrontendDir
+    // The root service for this peek plugin, relative to angularFrontendModuleDir
     // This service will be loaded once with the main angular app, outside of the
     // lazy loaded plugin main module.
     // Use this if you need to always have some code active, angular2 garbage collects
@@ -74,7 +83,7 @@
     },
     // (Optional)
     // The path for the plugin icon
-    // This must be relative to  "angularFrontendDir"
+    // This must be relative to  "angularFrontendAppDir"
     // EG "plugin_icon.png"
     "angularPluginIcon": "/assets/peek_plugin_noop/plugin_icon.png"
   },
@@ -88,9 +97,9 @@
     "enableAngularFrontend": true,
     // The directory where the angular2 route is for server admin site
     // EG "frontend/client"
-    "angularFrontendDir": "_private/server_fe",
+    "angularFrontendAppDir": "_private/server_fe_app",
     // The main module for the angular2 route
-    // This must be in the "angularFrontendDir"
+    // This must be in the "angularFrontendAppDir"
     // EG "plugin-noop.module"
     "angularMainModule": "plugin-noop.module"
   },
