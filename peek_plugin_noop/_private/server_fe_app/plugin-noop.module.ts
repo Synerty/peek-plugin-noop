@@ -23,6 +23,6 @@ export const pluginRoutes: Routes = [
     providers: [],
     declarations: [PluginNoopAdminComponent]
 })
-export default class PluginNoopAdminModule {
+export class PluginNoopAdminModule {
 
 }

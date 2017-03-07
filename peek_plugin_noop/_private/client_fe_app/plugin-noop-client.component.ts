@@ -1,6 +1,6 @@
 import {PeekComponent} from "@synerty/peek-web-ns";
 import {ComponentLifecycleEventEmitter, VortexService} from "@synerty/vortexjs";
-import {noopFilt} from "peek-client/peek_plugin_noop";
+import {noopFilt} from "@peek-client/peek_plugin_noop";
 import {extend} from "@synerty/vortexjs";
 
 @PeekComponent({

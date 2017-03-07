@@ -31,7 +31,7 @@ export const pluginRoutes: Routes = [
     providers: [],
     declarations: [PluginNoopClientComponent]
 })
-export default class PluginNoopClientModule
+export  class PluginNoopClientModule
 // implements PeekPluginMenuI
 {
     // menuRoot(): PeekPluginMenuItem

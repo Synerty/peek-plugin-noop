@@ -56,7 +56,7 @@
     // This must be in the "angularFrontendAppDir"
     // EG "plugin-noop.module"
     // NOTE, This class must be the default export, "export default class ..."
-    "angularMainModule": "plugin-noop.module",
+    "angularMainModule": "plugin-noop.module#PluginNoopClientModule",
     // (Optional)
     // The root module for this peek plugin, relative to angularFrontendModuleDir
     // This module will be loaded once with the main angular app, outside of the
@@ -101,7 +101,7 @@
     // The main module for the angular2 route
     // This must be in the "angularFrontendAppDir"
     // EG "plugin-noop.module"
-    "angularMainModule": "plugin-noop.module"
+    "angularMainModule": "plugin-noop.module#PluginNoopAdminModule"
   },
   // Settings specific to the database service
   // The database is migrated by the peek_server and used from both the server and worker
