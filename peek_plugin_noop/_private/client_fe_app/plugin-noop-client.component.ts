@@ -1,12 +1,12 @@
-import {PeekComponent} from "@synerty/peek-web-ns";
+import {Component} from "@angular/core";
 import {ComponentLifecycleEventEmitter, VortexService} from "@synerty/vortexjs";
 import {noopFilt} from "@peek-client/peek_plugin_noop";
 import {extend} from "@synerty/vortexjs";
 
-@PeekComponent({
+@Component({
     selector: 'plugin-noop-admin',
     templateUrl: 'plugin-noop-client.component.web.html',
-    moduleFilename: module.filename
+    moduleId: module.id
 })
 export class PluginNoopClientComponent extends ComponentLifecycleEventEmitter {
 
