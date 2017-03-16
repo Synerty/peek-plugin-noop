@@ -21,7 +21,7 @@ function replace {
     from=$1
     to=$2
 
-    for d in `find ./ -type d`
+    for d in `find ./ -type d -depth`
     do
         new=`echo $d | sed "s/$from/$to/g"`
         [ "$d" != "$new" ] && mv $d $new
