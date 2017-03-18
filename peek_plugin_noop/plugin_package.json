@@ -40,16 +40,16 @@
 
     // The directory is where the angular2 route is for the client site
     // This will be lazy loaded
-    // EG "_private/client_fe_app"
-    "appDir": "_private/client_fe_app",
+    // EG "_private/mobile_app"
+    "appDir": "_private/mobile_app",
     // The directory is where the angular2 module is for the client site
     // This will be linked in under node_modules/<plugin_name>_client
-    // EG "_private/client_fe_module"
-    "moduleDir": "_private/client_fe_module",
+    // EG "_private/mobile_module"
+    "moduleDir": "mobile_module",
     // The directory is where static assests live
     // This will be linked to app/assets/<plugin_name>
-    // EG "_private/client_fe_assets"
-    "assetDir": "_private/client_fe_assets",
+    // EG "_private/mobile_assets"
+    "assetDir": "_private/mobile_assets",
     // (Optional)
     // The main module for the angular2 route
     // This must be in the "appDir"
@@ -93,7 +93,7 @@
     "showHomeLink": true,
     // The directory where the angular2 route is for server admin site
     // EG "frontend/client"
-    "appDir": "_private/server_fe_app",
+    "appDir": "_private/admin_app",
     // The main module for the angular2 route
     // This must be in the "appDir"
     // EG "plugin-noop.module"
