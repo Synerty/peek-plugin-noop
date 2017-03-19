@@ -4,10 +4,23 @@ from distutils.core import setup
 
 from setuptools import find_packages
 
-pip_package_name = "peek-plugin-noop"
+#
+# Modify these values to fork a new plugin
+#
+author = "Synerty"
+author_email = 'contact@synerty.com'
 py_package_name = "peek_plugin_noop"
+pip_package_name = py_package_name.replace('_', '-')
 package_version = '0.0.18'
+description = 'Peek Plugin - Noop - This is the No Operation test/example plugin'
 
+download_url = 'https://bitbucket.org/synerty/%s/get/%s.zip'
+download_url %= (pip_package_name, package_version),
+url = 'https://bitbucket.org/synerty/%s' % pip_package_name
+
+#
+# Everything below should be ok
+#
 egg_info = "%s.egg-info" % pip_package_name
 if os.path.isdir(egg_info):
     shutil.rmtree(egg_info)
@@ -37,6 +50,7 @@ def find_package_files():
 
     return paths
 
+
 package_files = find_package_files()
 
 setup(
@@ -45,12 +59,11 @@ setup(
     package_data={'': package_files},
     install_requires=['peek-plugin-base'],
     version=package_version,
-    description='Peek Plugin - Noop - This is the No Operation test/example plugin',
-    author='Synerty',
-    author_email='contact@synerty.com',
-    url='https://github.com/Synerty/%s' % py_package_name,
-    download_url='https://github.com/Synerty/%s/tarball/%s' % (
-        pip_package_name, package_version),
+    description=description,
+    author=author,
+    author_email=author_email,
+    url=url,
+    download_url=download_url,
     keywords=['Peek', 'Python', 'Platform', 'synerty'],
     classifiers=[],
 )
