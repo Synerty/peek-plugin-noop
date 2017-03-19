@@ -8,8 +8,8 @@ from typing import Type
 
 
 def peekServerEntryHook() -> Type[PluginServerEntryHookABC]:
-    from ._private.server.PluginServerEntryHook import PluginServerEntryHook
-    return PluginServerEntryHook
+    from ._private.server.ServerEntryHook import ServerEntryHook
+    return ServerEntryHook
 
 
 def peekClientEntryHook() -> Type[PluginClientEntryHookABC]:

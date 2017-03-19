@@ -10,9 +10,9 @@ from twisted.internet import reactor
 logger = logging.getLogger(__name__)
 
 
-class PluginServerEntryHook(PluginServerEntryHookABC,
-                            PluginServerStorageEntryHookABC,
-                            PluginServerWorkerEntryHookABC):
+class ServerEntryHook(PluginServerEntryHookABC,
+                      PluginServerStorageEntryHookABC,
+                      PluginServerWorkerEntryHookABC):
 
 
     def load(self) -> None:
