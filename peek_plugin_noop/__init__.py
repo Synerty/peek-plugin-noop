@@ -1,29 +1,27 @@
-from typing import Type
+__version__ = '0.0.18'
 
 from peek_plugin_base.agent.PluginAgentEntryHookABC import PluginAgentEntryHookABC
 from peek_plugin_base.client.PluginClientEntryHookABC import PluginClientEntryHookABC
 from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
 from peek_plugin_base.worker.PluginWorkerEntryHookABC import PluginWorkerEntryHookABC
-from peek_plugin_noop._private.client.PluginClientEntryHook import PluginClientEntryHook
-from peek_plugin_noop._private.server.PluginServerEntryHook import PluginServerEntryHook
-from peek_plugin_noop._private.worker.PluginWorkerEntryHook import PluginWorkerEntryHook
-
-from peek_plugin_noop._private.agent.PluginAgentEntryHook import PluginAgentEntryHook
-
-__version__ = '0.0.18'
+from typing import Type
 
 
 def peekServerEntryHook() -> Type[PluginServerEntryHookABC]:
+    from ._private.server.PluginServerEntryHook import PluginServerEntryHook
     return PluginServerEntryHook
 
 
 def peekClientEntryHook() -> Type[PluginClientEntryHookABC]:
+    from ._private.client.PluginClientEntryHook import PluginClientEntryHook
     return PluginClientEntryHook
 
 
 def peekWorkerEntryHook() -> Type[PluginWorkerEntryHookABC]:
+    from ._private.worker.PluginWorkerEntryHook import PluginWorkerEntryHook
     return PluginWorkerEntryHook
 
 
 def peekAgentEntryHook() -> Type[PluginAgentEntryHookABC]:
+    from ._private.agent.PluginAgentEntryHook import PluginAgentEntryHook
     return PluginAgentEntryHook

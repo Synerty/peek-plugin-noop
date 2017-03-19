@@ -19,6 +19,7 @@ class PluginServerEntryHook(PluginServerEntryHookABC,
         # Force migration
 
         self._startLaterCall = None
+        logger.debug("loaded")
 
     def start(self):
 
