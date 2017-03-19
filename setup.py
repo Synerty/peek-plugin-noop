@@ -15,7 +15,7 @@ package_version = '0.0.18'
 description = 'Peek Plugin - Noop - This is the No Operation test/example plugin'
 
 download_url = 'https://bitbucket.org/synerty/%s/get/%s.zip'
-download_url %= (pip_package_name, package_version),
+download_url %= pip_package_name, package_version
 url = 'https://bitbucket.org/synerty/%s' % pip_package_name
 
 #
