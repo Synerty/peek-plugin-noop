@@ -14,11 +14,8 @@ PYPI_PUBLISH=""
 
 #------------------------------------------------------------------------------
 PIP_PACKAGE=${PY_PACKAGE//_/-} # Replace _ with -
+HAS_GIT=`ls -d .git 2> /dev/null`
 
-if [ -n "$(git status --porcelain)" ]; then
-    echo "There are uncomitted changes, please make sure all changes are comitted" >&2
-    exit 1
-fi
 
 if ! [ -f "setup.py" ]; then
     echo "setver.sh must be run in the directory where setup.py is" >&2
@@ -27,9 +24,16 @@ fi
 
 VER="${1:?You must pass a version of the format 0.0.0 as the only argument}"
 
-if git tag | grep -q "${VER}"; then
-    echo "Git tag for version ${VER} already exists." >&2
-    exit 1
+if [ $HAS_GIT ]; then
+    if [ -n "$(git status --porcelain)" ]; then
+        echo "There are uncomitted changes, please make sure all changes are comitted" >&2
+        exit 1
+    fi
+
+    if git tag | grep -q "${VER}"; then
+        echo "Git tag for version ${VER} already exists." >&2
+        exit 1
+    fi
 fi
 
 #------------------------------------------------------------------------------
@@ -46,11 +50,14 @@ sed -i "s;.*version.*;__version__ = '${VER}';" ${PY_PACKAGE}/__init__.py
 sed -i 's;.*"version".*:.*".*;    "version":"'${VER}'",;' ${PY_PACKAGE}/plugin_package.json
 
 # Reset the commit, we don't want versions in the commit
-git commit -a -m "Updated to version ${VER}"
 
-git tag ${VER}
-git push
-git push --tags
+if [ $HAS_GIT ]; then
+    git commit -a -m "Updated to version ${VER}"
+
+    git tag ${VER}
+    git push
+    git push --tags
+fi
 
 #------------------------------------------------------------------------------
 # Upload to test pypi
