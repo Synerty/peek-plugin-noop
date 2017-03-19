@@ -1,14 +1,3 @@
-""" 
- *  Copyright Synerty Pty Ltd 2013
- *
- *  This software is proprietary, you are not free to copy
- *  or redistribute this code in any format.
- *
- *  All rights to this software are reserved by 
- *  Synerty Pty Ltd
- *
-"""
-
 from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy.schema import MetaData
@@ -16,4 +5,19 @@ from sqlalchemy.schema import MetaData
 metadata = MetaData(schema="pl_noop")
 DeclarativeBase = declarative_base(metadata=metadata)
 
-from . import NoopTable
+
+def loadStorageTuples():
+    """ Load Storage Tables
+    
+    This method should be called from the "load()" method of the agent, server, worker
+    and client entry hook classes.
+    
+    This will register the ORM classes as tuples, allowing them to be serialised and
+    deserialized by the vortex.
+    
+    """
+    from . import NoopTable
+    NoopTable.__unused = False
+
+    from . import Setting
+    Setting.__unused = False

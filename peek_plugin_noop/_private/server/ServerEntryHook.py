@@ -7,6 +7,8 @@ from peek_plugin_base.server.PluginServerWorkerEntryHookABC import \
     PluginServerWorkerEntryHookABC
 from twisted.internet import reactor
 
+from peek_plugin_noop._private.storage import DeclarativeBase
+
 logger = logging.getLogger(__name__)
 
 
@@ -16,10 +18,8 @@ class ServerEntryHook(PluginServerEntryHookABC,
 
 
     def load(self) -> None:
-        # Force migration
-
-        self._startLaterCall = None
-        logger.debug("loaded")
+        DeclarativeBase.loadStorageTuples()
+        logger.debug("Loaded")
 
     def start(self):
 
@@ -48,7 +48,6 @@ class ServerEntryHook(PluginServerEntryHookABC,
 
     @property
     def dbMetadata(self):
-        from peek_plugin_noop._private.storage import DeclarativeBase
         return DeclarativeBase.metadata
 
     ###### Implement PluginServerWorkerEntryHookABC
