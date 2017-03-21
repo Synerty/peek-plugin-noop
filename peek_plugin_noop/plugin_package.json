@@ -55,7 +55,7 @@
     // This must be in the "appDir"
     // EG "plugin-noop.module"
     // NOTE, This class must be the default export, "export default class ..."
-    "appModule": "plugin-noop.module#PluginNoopClientModule",
+    "appModule": "noop.module#NoopModule",
     // (Optional)
     // The root module for this peek plugin, relative to moduleDir
     // This module will be loaded once with the main angular app, outside of the
@@ -97,7 +97,7 @@
     // The main module for the angular2 route
     // This must be in the "appDir"
     // EG "plugin-noop.module"
-    "appModule": "plugin-noop.module#PluginNoopAdminModule"
+    "appModule": "noop.module#NoopModule"
   },
   // Settings specific to the peek_client service
   "client": {

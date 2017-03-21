@@ -1,14 +1,14 @@
 import {Component} from "@angular/core";
 import {ComponentLifecycleEventEmitter, VortexService} from "@synerty/vortexjs";
-import {noopFilt} from "@peek-client/peek_plugin_noop";
+import {noopFilt} from "@peek-mobile/peek_plugin_noop";
 import {extend} from "@synerty/vortexjs";
 
 @Component({
-    selector: 'plugin-noop-admin',
-    templateUrl: 'plugin-noop-client.component.web.html',
+    selector: 'plugin-noop-mobile',
+    templateUrl: 'noop.component.mweb.html',
     moduleId: module.id
 })
-export class PluginNoopClientComponent extends ComponentLifecycleEventEmitter {
+export class NoopComponent extends ComponentLifecycleEventEmitter {
 
     date: string = "No data yet";
     stopped: boolean = false;
