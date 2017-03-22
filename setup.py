@@ -58,7 +58,7 @@ setup(
     packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
     package_data={'': package_files},
     install_requires=['peek-plugin-base'],
-    version=package_version,
+    zip_safe=False,version=package_version,
     description=description,
     author=author,
     author_email=author_email,
