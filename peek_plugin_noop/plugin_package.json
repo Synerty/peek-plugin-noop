@@ -43,9 +43,9 @@
     // EG "_private/mobile-app"
     "appDir": "_private/mobile-app",
     // The directory is where the angular2 module is for the client site
-    // This will be linked in under node_modules/<plugin_name>_client
+    // This will be linked in under node_modules/@peek/<plugin_name>
     // EG "_private/mobile-module"
-    "moduleDir": "mobile-module",
+    "moduleDir": "plugin-module",
     // The directory is where static assests live
     // This will be linked to app/assets/<plugin_name>
     // EG "_private/mobile-assets"
@@ -64,7 +64,7 @@
     // appModule when its' not needed.
     // EG "plugin-noop-root.service"
     "rootModule": {
-      "file": "plugin-noop-root.module",
+      "file": "_private/mobile/plugin-noop-root.module",
       "class": "PluginNoopClientRootModule"
     },
     // (Optional)
@@ -77,7 +77,7 @@
     // service injected into it.
     // EG "plugin-noop-root.service"
     "rootService": {
-      "file": "plugin-noop-root.service",
+      "file": "_private/mobile/plugin-noop-root.service",
       "class": "PluginNoopClientRootService"
     },
     // (Optional)
