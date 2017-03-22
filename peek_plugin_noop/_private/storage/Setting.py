@@ -244,8 +244,7 @@ def _getSetting(ormSession, name, propertyDict, key=None, value=None):
     ormSession.commit()
 
     # Close after return
-    with ormSession:
-        return setting[key]
+    return setting[key]
 
 
 # =============================================================================
