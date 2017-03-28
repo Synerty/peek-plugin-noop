@@ -64,10 +64,11 @@ fi
 PIPY_ALIAS="${2-$PYPI_PUBLISH}"
 
 if [ -n "${PIPY_ALIAS}" ]; then
-    echo "Pushing to pypi index server PIPY_ALIAS"
+    echo "Building sdist, Pushing to pypi index server PIPY_ALIAS"
     python setup.py sdist upload -r pypitest
 else
-    echo "Not publishing to any pypi indexes"
+    echo "Building sdist, Not publishing to any pypi indexes"
+    python setup.py sdist
 fi
 
 #------------------------------------------------------------------------------
