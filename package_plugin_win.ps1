@@ -3,9 +3,14 @@ param(
     [Parameter(Mandatory=$true)]
     [String]$plugin)
 
+
+if ([string]::IsNullOrEmpty($plugin) -or [string]::IsNullOrWhitespace($plugin)) {
+    Write-Error "Pass the file name or package name of the plugin release to install, to this script";
+}
+
 Write-Host "Requested peek plugin is $plugin"
 # Replace String with underscores
-$pluginUnder=$plugin -replace '-','_'
+$pluginUnder=$plugin.Trim("/-(\d+(\.)).*/g") -replace '-','_'
 
 # Make Powershell stop if it has errors
 $ErrorActionPreference = "Stop"
@@ -17,7 +22,7 @@ if (-Not [string]::IsNullOrEmpty($wantedVer)) {
 # Get the current location
 $startDir=Get-Location
 
-$baseDir="$startDir\peek_dist_win_$pluginUnder";
+$baseDir="$startDir\dist_win_$pluginUnder";
 
 # Delete the existing dist dir if it exists
 If (Test-Path $baseDir){
@@ -30,6 +35,7 @@ New-Item $baseDir -ItemType directory;
 # ------------------------------------------------------------------------------
 # Download the peek platform and all it's dependencies
 New-Item "$baseDir\py" -ItemType directory;
+Copy-Item $plugin "$baseDir\py" -Force;
 Set-Location "$baseDir\py";
 Write-Host "Downloading and creating windows wheels";
 pip wheel --no-cache $plugin;
