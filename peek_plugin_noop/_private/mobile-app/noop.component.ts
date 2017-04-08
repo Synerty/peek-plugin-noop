@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {ComponentLifecycleEventEmitter, VortexService} from "@synerty/vortexjs";
-import {noopFilt} from "@peek/peek_plugin_noop";
+import {noopFilt} from "@peek/peek_plugin_noop/_private";
 import {extend} from "@synerty/vortexjs";
 
 @Component({
