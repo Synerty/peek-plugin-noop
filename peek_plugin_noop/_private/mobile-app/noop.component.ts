@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {ComponentLifecycleEventEmitter, VortexService} from "@synerty/vortexjs";
 import {noopFilt} from "@peek/peek_plugin_noop/_private";
 import {extend} from "@synerty/vortexjs";
-import {Ng2BalloonMsgService} from "@synerty/ng2-balloon-msg";
+import {Ng2BalloonMsgService, UsrMsgLevel, UsrMsgType} from "@synerty/ng2-balloon-msg";
 
 @Component({
     selector: 'plugin-noop-mobile',
@@ -47,8 +47,15 @@ export class NoopComponent extends ComponentLifecycleEventEmitter {
         loadAgain();
     }
 
-    sendSuccessMsgClicked() {
+    showSuccessMsgClicked() {
         this.balloonMsg.showSuccess("You have clicked the button.", "/");
+    }
+
+    showInfoConfirm() {
+        let p = this.balloonMsg.showMessage(
+            "This is a info confirm.",
+            UsrMsgLevel.Info,
+            UsrMsgType.Confirm);
     }
 
 
