@@ -1,11 +1,13 @@
-<h1>No Operation Peek App</h1>
-<h2>User App</h2>
-<div> Angular2 Lazy Loaded Plugin</div>
-<p>{{date}}</p>
+<div class="plugin-noop">
+    <div class="title text-center">No Operation Peek App</div>
+    <div class="title">User App</div>
+    <div class="title"> Angular2 Lazy Loaded Plugin</div>
+    <div class="description">{{date}}</div>
 
-<Button type="button" class="btn btn-success"
-        (click)="showSuccessMsgClicked()">Show success balloon
-</Button>
-<Button type="button" class="btn btn-success"
-        (click)="showInfoConfirm()">Show info dialog
-</Button>
+    <Button class="btn" type="button"
+            (click)="showSuccessMsgClicked()">Show success balloon
+    </Button>
+    <Button class="btn" type="button"
+            (click)="showInfoConfirm()">Show info dialog
+    </Button>
+</div>
