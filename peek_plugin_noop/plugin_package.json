@@ -61,10 +61,13 @@
     // Use this if you need to always have some code active, angular2 garbage collects
     // appModule when its' not needed.
     // EG "plugin-noop-root.service"
+    // persistent (boolean): If this is true, then the peek mobile app loads this service
+    // on startup and keeps it loaded
     "rootModules": [
       {
         "file": "_private/mobile/plugin-noop-root.module",
-        "class": "PluginNoopClientRootModule"
+        "class": "PluginNoopClientRootModule",
+        "persistent":false
       }
     ],
     // (Optional) (Depreicated, use rootServices instead)
