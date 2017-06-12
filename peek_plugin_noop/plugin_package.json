@@ -22,10 +22,78 @@
     "client",
     "storage",
     "mobile",
+    "desktop",
     "admin"
   ],
   // Settings specific to the peek_client service
   "mobile": {
+    // Show Plugin Home Link
+    // Show the plugin as an app on the home screen
+    "showHomeLink": true,
+    // Show Plugin In Title Bar
+    // Show the plugin as an app on the home screen
+    "showInTitleBar": false,
+    // True for left, false, for right
+    "titleBarLeft": false,
+    // The text on the button
+    "titleBarText": "Noop",
+    // The directory is where the angular2 route is for the client site
+    // This will be lazy loaded
+    // EG "_private/mobile-app"
+    "appDir": "_private/mobile-app",
+    // The directory is where the angular2 module is for the client site
+    // This will be linked in under node_modules/@peek/<plugin_name>
+    // EG "_private/mobile-module"
+    "moduleDir": "plugin-module",
+    // The directory is where static assests live
+    // This will be linked to app/assets/<plugin_name>
+    // EG "_private/mobile-assets"
+    "assetDir": "_private/mobile-assets",
+    // (Optional)
+    // The main module for the angular2 route
+    // This must be in the "appDir"
+    // EG "plugin-noop.module"
+    // NOTE, This class must be the default export, "export default class ..."
+    "appModule": "noop.module#NoopModule",
+    // (Optional)
+    // The root module for this peek plugin, relative to moduleDir
+    // This module will be loaded once with the main angular app, outside of the
+    // lazy loaded plugin main module.
+    // Use this if you need to always have some code active, angular2 garbage collects
+    // appModule when its' not needed.
+    // EG "plugin-noop-root.service"
+    // persistent (boolean): If this is true, then the peek mobile app loads this service
+    // on startup and keeps it loaded
+    "rootModules": [
+      {
+        "file": "_private/mobile/plugin-noop-root.module",
+        "class": "PluginNoopClientRootModule",
+        "persistent":false
+      }
+    ],
+    // (Optional) (Depreicated, use rootServices instead)
+    // The root service for this peek plugin, relative to moduleDir
+    // This service will be loaded once with the main angular app, outside of the
+    // lazy loaded plugin main module.
+    // Use this if you need to always have some code active, angular2 garbage collects
+    // services provided by appModule when they're not needed.
+    // NOTE: You problably also want to have a "rootModules" which needs this
+    // service injected into it.
+    // EG "plugin-noop-root.service"
+    "rootServices": [
+      {
+        "file": "_private/mobile/plugin-noop-root.service",
+        "class": "PluginNoopClientRootService"
+      }
+    ],
+    // (Optional)
+    // The path for the plugin icon
+    // This must be relative to  "appDir"
+    // EG "plugin_icon.png"
+    "icon": "/assets/peek_plugin_noop/plugin_icon.png"
+  },
+  // Settings specific to the peek_client service
+  "desktop": {
     // Show Plugin Home Link
     // Show the plugin as an app on the home screen
     "showHomeLink": true,
