@@ -26,6 +26,7 @@
     "admin"
   ],
   // Settings specific to the peek_client service
+  // This could be "mobile-ns", "mobile-web" or "mobile"
   "mobile": {
     // Show Plugin Home Link
     // Show the plugin as an app on the home screen
@@ -93,6 +94,7 @@
     "icon": "/assets/peek_plugin_noop/plugin_icon.png"
   },
   // Settings specific to the peek_client service
+  // This could be "desktop-electron", "desktop-web" or "desktop"
   "desktop": {
     // Show Plugin Home Link
     // Show the plugin as an app on the home screen
