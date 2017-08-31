@@ -63,28 +63,39 @@
     // Use this if you need to always have some code active, angular2 garbage collects
     // appModule when its' not needed.
     // EG "plugin-noop-root.service"
-    // persistent (boolean): If this is true, then the peek mobile app loads this service
     // on startup and keeps it loaded
     "rootModules": [
       {
         "file": "_private/mobile/plugin-noop-root.module",
-        "class": "PluginNoopClientRootModule",
-        "persistent":false
+        "class": "PluginNoopClientRootModule"
       }
     ],
     // (Optional) (Depreicated, use rootServices instead)
     // The root service for this peek plugin, relative to moduleDir
     // This service will be loaded once with the main angular app, outside of the
     // lazy loaded plugin main module.
+    //
     // Use this if you need to always have some code active, angular2 garbage collects
     // services provided by appModule when they're not needed.
     // NOTE: You problably also want to have a "rootModules" which needs this
     // service injected into it.
+    //
+    // persistent (boolean): If this is true, then the peek mobile app loads this service
+    //
+    // If you want the service provided with a different class, set the useClassFile
+    // and useClassClass parameters.
+    // useClassFile (string): The file that the class to use exists in.
+    // useClassClass (string): The class of the class to import and put into "useClass"
+    //
+
     // EG "plugin-noop-root.service"
     "rootServices": [
       {
         "file": "_private/mobile/plugin-noop-root.service",
-        "class": "PluginNoopClientRootService"
+        "class": "PluginNoopClientRootService",
+        "useClassFile": "_private/mobile/plugin-noop-root.service",
+        "useClassClass": "PluginNoopClientRootService",
+        "persistent":false
       }
     ],
     // (Optional)
