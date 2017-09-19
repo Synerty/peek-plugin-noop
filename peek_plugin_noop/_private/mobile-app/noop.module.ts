@@ -7,10 +7,15 @@ import {PeekModuleFactory} from "@synerty/peek-util/index.web";
 
 // Import the default route component
 import {NoopComponent} from "./noop.component";
+import {ConfigComponent} from "./config/config.component";
 
 
 // Define the child routes for this plugin
 export const pluginRoutes: Routes = [
+    {
+        path: '/config',
+        component: ConfigComponent
+    },
     {
         path: '',
         component: NoopComponent
@@ -31,7 +36,7 @@ export const pluginRoutes: Routes = [
         PeekModuleFactory.RouterModule.forChild(pluginRoutes)],
     exports: [],
     providers: [],
-    declarations: [NoopComponent]
+    declarations: [NoopComponent, ConfigComponent]
 })
 export class NoopModule
 {
