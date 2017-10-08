@@ -8,11 +8,6 @@ rm -rf dist *egg-info || true
 
 find ./ -name '__pycache__' -exec rm -rf {} \; || true
 
-caps="DATA_DMS"
-underscore="_data_dms"
-hyphen="-data-dms"
-camelL="dataDms"
-camelU="DataDms"
 
 set nounset
 set errexit
@@ -40,11 +35,27 @@ function replace {
 
 }
 
-replace "_noop"  "$underscore"
-replace "-noop" "$hyphen"
-replace "NOOP" "$caps"
-replace "Noop" "$camelU"
-replace "noop" "$camelL"
+# RENAME THE PLUGIN
+replace "_noop"  "_data_dms"
+replace "-noop" "-data-dms"
+
+replace "_NOOP" "_DATA_DMS"
+replace "-NOOP" "-DATA-DMS"
+
+replace "Noop" "DataDms"
+replace "noop" "dataDms"
+
+# RENAME THE STRING INT OBJECT
+replace "_string_int"  "_thing_one"
+replace "-string-int" "-thing-one"
+
+replace "STRING_INT" "THING_ONE"
+replace "STRING-INT" "THING-ONE"
+
+replace "StringInt" "ThingOne"
+replace "stringInt" "thingOne"
+
+replace "String Int" "Thing One"
 
 # Remove compile generated javascript
 find ./ -type f -not -name '.git' -name "*.js" -exec rm {} \; || true
