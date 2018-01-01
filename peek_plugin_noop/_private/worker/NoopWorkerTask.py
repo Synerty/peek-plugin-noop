@@ -1,6 +1,7 @@
 from datetime import datetime
 from time import sleep
 
+import pytz
 from celery.utils.log import get_task_logger
 from peek_plugin_base.worker import CeleryDbConn
 from peek_plugin_noop._private.storage.NoopTable import NoopTable
@@ -21,7 +22,7 @@ def add1(val):
 def task1(inStr):
     logger.info("Received %s", inStr)
     sleep(1.0)
-    return toStr(datetime.utcnow())
+    return toStr(datetime.now(pytz.utc))
 
 
 @CeleryClient

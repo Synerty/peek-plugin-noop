@@ -1,6 +1,7 @@
 import logging
 from datetime import datetime
 
+import pytz
 from twisted.internet import reactor
 from txhttputil.util.DeferUtil import printFailure
 from vortex.SerialiseUtil import fromStr, T_DATETIME
@@ -15,7 +16,7 @@ def callWorkerSleepLoop():
     # logger.info("Sleep Only Task - Ticking along")
 
     from peek_plugin_noop._private.worker.NoopWorkerTask import task1
-    startTime = datetime.utcnow()
+    startTime = datetime.now(pytz.utc)
 
     d = task1.delay("Some task arg str")
 
@@ -23,7 +24,7 @@ def callWorkerSleepLoop():
         resultDate = fromStr(resultStr, T_DATETIME)
         logger.info("Sleep Only Task started %s, returned %s",
                     resultDate - startTime,
-                    datetime.utcnow() - startTime)
+                    datetime.now(pytz.utc) - startTime)
 
         reactor.callLater(REPEAT, callWorkerSleepLoop)
 
@@ -36,13 +37,13 @@ def callWorkerDbLoop():
     # logger.info("DB Update Task - Ticking along")
 
     from peek_plugin_noop._private.worker.NoopWorkerTask import dbTask
-    startTime = datetime.utcnow()
+    startTime = datetime.now(pytz.utc)
     d = dbTask.delay("db update task str arg")
 
     def cb(newId):
         logger.info("DB Update Task newId %s, returned %s",
                     newId,
-                    datetime.utcnow() - startTime)
+                    datetime.now(pytz.utc) - startTime)
         reactor.callLater(REPEAT, callWorkerDbLoop)
 
     d.addCallback(cb)
