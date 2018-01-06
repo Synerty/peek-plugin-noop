@@ -128,10 +128,6 @@
     // The directory is where the angular2 route is for the client site
     // This will be lazy loaded
     // EG "_private/mobile-app"
-    "appDir": "_private/mobile-app",
-    // The directory is where the angular2 module is for the client site
-    // This will be linked in under node_modules/@peek/<plugin_name>
-    // EG "_private/mobile-module"
     "moduleDir": "plugin-module",
     // The directory is where static assests live
     // This will be linked to app/assets/<plugin_name>
@@ -142,7 +138,16 @@
     // This must be in the "appDir"
     // EG "plugin-noop.module"
     // NOTE, This class must be the default export, "export default class ..."
+    "appDir": "_private/mobile-app",
+    // The directory is where the angular2 module is for the client site
+    // This will be linked in under node_modules/@peek/<plugin_name>
+    // EG "_private/mobile-module"
     "appModule": "noop.module#NoopModule",
+    // (Optional)
+    // The same as "appDir", except that this module will show on the configuration screen
+    "cfgDir": "_private/mobile-cfg",
+    // The same as "appModule", except that this module will show on the configuration screen
+    "cfgModule": "noop.module#NoopModule",
     // (Optional)
     // The root module for this peek plugin, relative to moduleDir
     // This module will be loaded once with the main angular app, outside of the
