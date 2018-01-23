@@ -28,10 +28,6 @@
   // Settings specific to the peek_client service
   // This could be "mobile-ns", "mobile-web" or "mobile"
   "mobile": {
-    // Config Menu Button (Optional)
-    // Add a config button on the footer, this is the path it will route to
-    // DON'T include this plugins route prefix, eg /peek_plugin_noop
-    "configLinkPath": "/config", // Actual path will be /peek_plugin_noop/config
     // Show Plugin Home Link
     // Show the plugin as an app on the home screen
     "showHomeLink": true,
@@ -60,6 +56,11 @@
     // EG "plugin-noop.module"
     // NOTE, This class must be the default export, "export default class ..."
     "appModule": "noop.module#NoopModule",
+    // (Optional)
+    // The same as "appDir", except that this module will show on the configuration screen
+    "cfgDir": "_private/mobile-cfg",
+    // The same as "appModule", except that this module will show on the configuration screen
+    "cfgModule": "noop.module#NoopModule",
     // (Optional)
     // The root module for this peek plugin, relative to moduleDir
     // This module will be loaded once with the main angular app, outside of the
