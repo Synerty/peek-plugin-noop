@@ -11,7 +11,7 @@ author = "Synerty"
 author_email = 'contact@synerty.com'
 py_package_name = "peek_plugin_noop"
 pip_package_name = py_package_name.replace('_', '-')
-package_version = '1.0.0.3'
+package_version = '1.0.0.4'
 description = 'Peek Plugin - Noop - This is the No Operation test/example plugin'
 
 download_url = 'https://bitbucket.org/synerty/%s/get/%s.zip'
