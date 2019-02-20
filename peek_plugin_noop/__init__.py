@@ -1,4 +1,4 @@
-__version__ = '1.1.8'
+__version__ = '1.1.9'
 
 from peek_plugin_base.agent.PluginAgentEntryHookABC import PluginAgentEntryHookABC
 from peek_plugin_base.client.PluginClientEntryHookABC import PluginClientEntryHookABC
