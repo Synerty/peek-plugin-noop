@@ -1,5 +1,8 @@
 import {NgModule, OnDestroy} from "@angular/core";
 import {PluginNoopClientRootService} from "./plugin-noop-root.service";
+import {CommonModule} from "@angular/common";
+import {PeekModuleFactory} from "@synerty/peek-util-web";
+import {MobileRootComponent} from "./root-component/root.component";
 
 /** Client Root Module
  *
@@ -9,7 +12,18 @@ import {PluginNoopClientRootService} from "./plugin-noop-root.service";
  * Configure this in plugin_package.json
  */
 
-@NgModule({})
+@NgModule({
+    imports: [
+        CommonModule,
+        ...PeekModuleFactory.FormsModules,
+    ],
+    exports: [
+        MobileRootComponent
+    ],
+    providers: [
+    ],
+    declarations: [MobileRootComponent]
+})
 export class PluginNoopClientRootModule implements OnDestroy {
     private static instanceCount = 0;
     private instanceIndex;
