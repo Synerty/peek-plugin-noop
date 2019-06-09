@@ -91,6 +91,9 @@
         // and useClassClass parameters.
         // useClassFile (string): The file that the class to use exists in.
         // useClassClass (string): The class of the class to import and put into "useClass"
+        // useExistingClass (string): If you want the service declaration to use the
+        //              "useExisting", set this to the class name you want defined.
+        //              This class must also be declared in this "rootServices"
         //
         // EG "plugin-noop-root.service"
         "rootServices": [
@@ -99,6 +102,7 @@
                 "class": "PluginNoopClientRootService",
                 "useClassFile": "_private/mobile/plugin-noop-root.service",
                 "useClassClass": "PluginNoopClientRootService",
+                "useExistingClass": null,
                 "persistent": false,
                 "locatedInAppDir": true
             }
@@ -208,6 +212,9 @@
         // and useClassClass parameters.
         // useClassFile (string): The file that the class to use exists in.
         // useClassClass (string): The class of the class to import and put into "useClass"
+        // useExistingClass (string): If you want the service declaration to use the
+        //              "useExisting", set this to the class name you want defined.
+        //              This class must also be declared in this "rootServices"
         //
         // EG "plugin-noop-root.service"
         "rootServices": [
@@ -216,6 +223,7 @@
                 "class": "PluginNoopClientRootService",
                 "useClassFile": "_private/mobile/plugin-noop-root.service",
                 "useClassClass": "PluginNoopClientRootService",
+                "useExistingClass": null,
                 "persistent": false,
                 "locatedInAppDir": true
             }
