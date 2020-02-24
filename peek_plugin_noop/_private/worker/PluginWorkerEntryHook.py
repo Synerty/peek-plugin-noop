@@ -30,8 +30,3 @@ class PluginWorkerEntryHook(PluginWorkerEntryHookABC):
     @property
     def celeryAppIncludes(self):
         return [NoopWorkerTask.__name__]
-
-    @property
-    def celeryApp(self):
-        from peek_plugin_noop._private.worker.NoopCeleryApp import celeryApp
-        return celeryApp

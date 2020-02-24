@@ -9,7 +9,7 @@ from sqlalchemy.sql.functions import func
 from txcelery.defer import CeleryClient
 from vortex.SerialiseUtil import toStr
 
-from peek_plugin_noop._private.worker.NoopCeleryApp import celeryApp
+from peek_plugin_base.worker.CeleryApp import celeryApp
 
 logger = get_task_logger(__name__)
 

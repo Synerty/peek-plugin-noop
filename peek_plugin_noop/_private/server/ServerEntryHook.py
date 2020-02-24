@@ -51,8 +51,3 @@ class ServerEntryHook(PluginServerEntryHookABC,
         return DeclarativeBase.metadata
 
     ###### Implement PluginServerWorkerEntryHookABC
-
-    @property
-    def celeryApp(self):
-        from peek_plugin_noop._private.worker.NoopCeleryApp import celeryApp
-        return celeryApp
