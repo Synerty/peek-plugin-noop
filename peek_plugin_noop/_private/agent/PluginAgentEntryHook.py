@@ -17,7 +17,7 @@ class PluginAgentEntryHook(PluginAgentEntryHookABC):
             logger.debug("started")
 
         self._startLaterCall = reactor.callLater(3.0, started)
-        logger.debug("starting")
+        # logger.debug("starting")
 
     def stop(self):
         if self._startLaterCall:
