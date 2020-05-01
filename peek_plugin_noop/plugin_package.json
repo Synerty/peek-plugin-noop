@@ -107,19 +107,6 @@
                 "locatedInAppDir": true
             }
         ],
-        // (Optional) (Depreicated, use rootServices instead)
-        // The root service for this peek plugin, relative to moduleDir
-        // This service will be loaded once with the main angular app, outside of the
-        // lazy loaded plugin main module.
-        // Use this if you need to always have some code active, angular2 garbage collects
-        // services provided by appModule when they're not needed.
-        "rootServices": [
-            {
-                "file": "_private/mobile/plugin-noop-root.service",
-                "class": "PluginNoopClientRootService",
-                "locatedInAppDir": true
-            }
-        ],
         // (Optional)
         // The root components for this peek plugin.
         // This component must be declared in a module in the rootModules in this config

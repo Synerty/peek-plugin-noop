@@ -5,9 +5,9 @@ from peek_plugin_base.server.PluginServerStorageEntryHookABC import \
     PluginServerStorageEntryHookABC
 from peek_plugin_base.server.PluginServerWorkerEntryHookABC import \
     PluginServerWorkerEntryHookABC
-from twisted.internet import reactor
-
+from peek_plugin_noop._private.server.MainController import MainController
 from peek_plugin_noop._private.storage import DeclarativeBase
+from twisted.internet.defer import inlineCallbacks
 
 logger = logging.getLogger(__name__)
 
@@ -16,29 +16,25 @@ class ServerEntryHook(PluginServerEntryHookABC,
                       PluginServerStorageEntryHookABC,
                       PluginServerWorkerEntryHookABC):
 
-
     def load(self) -> None:
         DeclarativeBase.loadStorageTuples()
         logger.debug("Loaded")
 
+        self._mainController = MainController()
+
+    @inlineCallbacks
     def start(self):
+        yield self._mainController.start()
 
-        def started():
-            self._startLaterCall = None
-            logger.debug("started")
-
-            from peek_plugin_noop._private.server import NoopCeleryTaskMaster
-            NoopCeleryTaskMaster.start()
-
-        self._startLaterCall = reactor.callLater(3.0, started)
         logger.debug("starting")
 
     def stop(self):
         from peek_plugin_noop._private.storage import DeclarativeBase
         DeclarativeBase.__unused = "Testing imports, after sys.path.pop() in register"
 
-        if self._startLaterCall:
-            self._startLaterCall.cancel()
+        self._mainController.shutdown()
+
+        self._mainController = None
         logger.debug("stopped")
 
     def unload(self):
