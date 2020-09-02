@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {ComponentLifecycleEventEmitter, VortexService} from "@synerty/vortexjs";
 import {noopFilt} from "@peek/peek_plugin_noop/_private";
 import {extend} from "@synerty/vortexjs";
-import {Ng2BalloonMsgService, UsrMsgLevel, UsrMsgType} from "@synerty/ng2-balloon-msg";
+import {BalloonMsgService, BalloonMsgLevel, BalloonMsgType} from "@synerty/peek-plugin-base-js";
 
 @Component({
     selector: 'plugin-noop-mobile',
@@ -18,7 +18,7 @@ export class NoopComponent extends ComponentLifecycleEventEmitter {
         "key": "sendDate"
     }, noopFilt);
 
-    constructor(vortexService: VortexService, private balloonMsg:Ng2BalloonMsgService) {
+    constructor(vortexService: VortexService, private balloonMsg:BalloonMsgService) {
         super();
 
         let loader = vortexService.createTupleLoader(this, this.filt);
@@ -54,8 +54,8 @@ export class NoopComponent extends ComponentLifecycleEventEmitter {
     showInfoConfirm() {
         let p = this.balloonMsg.showMessage(
             "This is a info confirm.",
-            UsrMsgLevel.Info,
-            UsrMsgType.Confirm);
+            BalloonMsgLevel.Info,
+            BalloonMsgType.Confirm);
     }
 
 
