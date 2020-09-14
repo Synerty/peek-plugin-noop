@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {ComponentLifecycleEventEmitter, VortexService} from "@synerty/vortexjs";
+import {NgLifeCycleEvents, VortexService} from "@synerty/vortexjs";
 import {noopFilt} from "@peek/peek_plugin_noop/_private";
 import {extend} from "@synerty/vortexjs";
 import {BalloonMsgService, BalloonMsgLevel, BalloonMsgType} from "@synerty/peek-plugin-base-js";
@@ -9,7 +9,7 @@ import {BalloonMsgService, BalloonMsgLevel, BalloonMsgType} from "@synerty/peek-
     templateUrl: 'config.component.mweb.html',
     moduleId: module.id
 })
-export class ConfigComponent extends ComponentLifecycleEventEmitter {
+export class ConfigComponent extends NgLifeCycleEvents {
 
 
     constructor() {

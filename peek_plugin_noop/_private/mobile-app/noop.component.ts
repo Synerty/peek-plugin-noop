@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {ComponentLifecycleEventEmitter, VortexService} from "@synerty/vortexjs";
+import {NgLifeCycleEvents, VortexService} from "@synerty/vortexjs";
 import {noopFilt} from "@peek/peek_plugin_noop/_private";
 import {extend} from "@synerty/vortexjs";
 import {BalloonMsgService, BalloonMsgLevel, BalloonMsgType} from "@synerty/peek-plugin-base-js";
@@ -9,7 +9,7 @@ import {BalloonMsgService, BalloonMsgLevel, BalloonMsgType} from "@synerty/peek-
     templateUrl: 'noop.component.mweb.html',
     moduleId: module.id
 })
-export class NoopComponent extends ComponentLifecycleEventEmitter {
+export class NoopComponent extends NgLifeCycleEvents {
 
     date: string = "No data yet";
     stopped: boolean = false;
