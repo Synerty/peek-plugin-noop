@@ -26,7 +26,7 @@
         "admin"
     ],
     // Settings specific to the peek_client service
-    // This could be "mobile-ns", "mobile-web" or "mobile"
+    // This could be "mobile-web" or "mobile"
     "mobile": {
         // Show Plugin Home Link
         // Show the plugin as an app on the home screen
