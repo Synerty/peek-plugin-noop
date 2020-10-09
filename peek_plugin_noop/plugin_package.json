@@ -43,7 +43,7 @@
         // EG "_private/mobile-app"
         "appDir": "_private/mobile-app",
         // The directory is where the angular2 module is for the client site
-        // This will be linked in under node_modules/@_peek/<plugin_name>
+        // This will be linked in under node_modules/@peek/<plugin_name>
         // EG "_private/mobile-module"
         "moduleDir": "plugin-module",
         // The directory is where static assests live
@@ -158,7 +158,7 @@
         // NOTE, This class must be the default export, "export default class ..."
         "appDir": "_private/mobile-app",
         // The directory is where the angular2 module is for the client site
-        // This will be linked in under node_modules/@_peek/<plugin_name>
+        // This will be linked in under node_modules/@peek/<plugin_name>
         // EG "_private/mobile-module"
         "appModule": "noop.module#NoopModule",
         // (Optional)
