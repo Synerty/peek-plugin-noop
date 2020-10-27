@@ -6,8 +6,7 @@ import {BalloonMsgService, BalloonMsgLevel, BalloonMsgType} from "@synerty/peek-
 
 @Component({
     selector: 'plugin-noop-mobile',
-    templateUrl: 'noop.component.mweb.html',
-    moduleId: module.id
+    templateUrl: 'noop.component.mweb.html'
 })
 export class NoopComponent extends NgLifeCycleEvents {
 
