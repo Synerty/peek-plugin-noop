@@ -25,7 +25,7 @@
         "desktop",
         "admin"
     ],
-    // Settings specific to the peek_client service
+    // Settings specific to the peek_office_service service
     // This could be "mobile-web" or "mobile"
     "mobile": {
         // Show Plugin Home Link
@@ -125,7 +125,7 @@
         // EG "plugin_icon.png"
         "icon": "/assets/peek_plugin_noop/plugin_icon.png"
     },
-    // Settings specific to the peek_client service
+    // Settings specific to the peek_office_service service
     // This could be "desktop-electron", "desktop-web" or "desktop"
     "desktop": {
         // Config Menu Button (Optional)
@@ -233,7 +233,7 @@
         // EG "plugin_icon.png"
         "icon": "/assets/peek_plugin_noop/plugin_icon.png"
     },
-    // Settings specific to the peek_server service
+    // Settings specific to the peek_logic_service service
     "admin": {
         // Show Plugin Home Link
         // Show the plugin in the list of plugins on the admin screen
@@ -246,23 +246,23 @@
         // EG "plugin-noop.module"
         "appModule": "noop.module#NoopModule"
     },
-    // Settings specific to the peek_client service
+    // Settings specific to the peek_office_service service
     "client": {
     },
-    // Settings specific to the peek_server service
+    // Settings specific to the peek_logic_service service
     "server": {
     },
     // Settings specific to the database service
-    // The database is migrated by the peek_server and used from both the server and worker
+    // The database is migrated by the peek_logic_service and used from both the server and worker
     // services
     "storage": {
         // The alembic directory where the database schema migration scripts are stored
         "alembicDir": "_private/alembic"
     },
-    // Settings specific to the peek_worker service
+    // Settings specific to the peek_worker_service service
     "worker": {
     },
-    // Settings specific to the peek_agent service
+    // Settings specific to the peek_agent_service service
     "agent": {
     }
 }

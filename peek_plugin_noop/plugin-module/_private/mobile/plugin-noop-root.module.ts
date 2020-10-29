@@ -8,7 +8,7 @@ import { MobileRootComponent } from "./root-component/root.component";
 
 /** Client Root Module
  *
- * This module will be loaded by peek-mobile when the app loads.
+ * This module will be loaded by peek-field-app when the app loads.
  * There will be one instance of it, and it be around for the life of the app.
  *
  * Configure this in plugin_package.json

@@ -2,7 +2,7 @@ import {Injectable, OnDestroy} from "@angular/core";
 
 /** Client Root Service
  *
- * This service will be loaded by peek-mobile when the app laods.
+ * This service will be loaded by peek-field-app when the app laods.
  * There will be one instance of it, and it be around for the life of the app.
  *
  * Configure this in plugin_package.json
