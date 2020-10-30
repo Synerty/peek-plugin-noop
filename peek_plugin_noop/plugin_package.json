@@ -19,15 +19,14 @@
         "server",
         "worker",
         "agent",
-        "client",
         "storage",
-        "mobile",
-        "desktop",
+        "field",
+        "office",
         "admin"
     ],
     // Settings specific to the peek_office_service service
     // This could be "mobile-web" or "mobile"
-    "mobile": {
+    "field": {
         // Show Plugin Home Link
         // Show the plugin as an app on the home screen
         "showHomeLink": true,
@@ -127,7 +126,7 @@
     },
     // Settings specific to the peek_office_service service
     // This could be "desktop-electron", "desktop-web" or "desktop"
-    "desktop": {
+    "office": {
         // Config Menu Button (Optional)
         // Add a config button on the footer, this is the path it will route to
         // DON'T include this plugins route prefix, eg /peek_plugin_noop
@@ -245,9 +244,6 @@
         // This must be in the "appDir"
         // EG "plugin-noop.module"
         "appModule": "noop.module#NoopModule"
-    },
-    // Settings specific to the peek_office_service service
-    "client": {
     },
     // Settings specific to the peek_logic_service service
     "server": {
