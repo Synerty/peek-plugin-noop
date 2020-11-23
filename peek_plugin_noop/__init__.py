@@ -12,7 +12,12 @@ def peekLogicEntryHook() -> Type[PluginLogicEntryHookABC]:
     return LogicEntryHook
 
 
-def peekClientEntryHook() -> Type[PluginClientEntryHookABC]:
+def peekFieldEntryHook() -> Type[PluginClientEntryHookABC]:
+    from ._private.client.PluginClientEntryHook import PluginClientEntryHook
+    return PluginClientEntryHook
+
+
+def peekOfficeEntryHook() -> Type[PluginClientEntryHookABC]:
     from ._private.client.PluginClientEntryHook import PluginClientEntryHook
     return PluginClientEntryHook
 
