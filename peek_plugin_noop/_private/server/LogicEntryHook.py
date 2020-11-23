@@ -1,6 +1,6 @@
 import logging
 
-from peek_plugin_base.server.PluginServerEntryHookABC import PluginServerEntryHookABC
+from peek_plugin_base.server.PluginLogicEntryHookABC import PluginLogicEntryHookABC
 from peek_plugin_base.server.PluginServerStorageEntryHookABC import \
     PluginServerStorageEntryHookABC
 from peek_plugin_base.server.PluginServerWorkerEntryHookABC import \
@@ -12,7 +12,7 @@ from twisted.internet.defer import inlineCallbacks
 logger = logging.getLogger(__name__)
 
 
-class ServerEntryHook(PluginServerEntryHookABC,
+class LogicEntryHook(PluginLogicEntryHookABC,
                       PluginServerStorageEntryHookABC,
                       PluginServerWorkerEntryHookABC):
 

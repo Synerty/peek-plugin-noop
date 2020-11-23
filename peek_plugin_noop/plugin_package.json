@@ -16,7 +16,7 @@
     },
     // The Peek Platform services that this plugin needs to run
     "requiresServices": [
-        "server",
+        "logic",
         "worker",
         "agent",
         "storage",
@@ -246,7 +246,7 @@
         "appModule": "noop.module#NoopModule"
     },
     // Settings specific to the peek_logic_service service
-    "server": {
+    "logic": {
     },
     // Settings specific to the database service
     // The database is migrated by the peek_logic_service and used from both the server and worker
