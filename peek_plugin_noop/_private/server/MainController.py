@@ -24,8 +24,9 @@ class MainController:
         self._running = False
 
     def _startWorkerSleepLoop(self):
-        d = DeferredList([self._workerSleepLoopStrand(n) for n in range(50)],
-                         fireOnOneErrback=True)
+        d = DeferredList(
+            [self._workerSleepLoopStrand(n) for n in range(50)], fireOnOneErrback=True
+        )
         d.addErrback(vortexLogFailure, logger, consumeError=True)
 
     @inlineCallbacks
@@ -33,18 +34,22 @@ class MainController:
         # logger.info("Sleep Only Task - Ticking along")
 
         from peek_plugin_noop._private.worker.NoopWorkerTask import task1
+
         startTime = datetime.now(pytz.utc)
         while self._running:
             resultStr = yield task1.delay("Some task arg str")
 
             resultDate = fromStr(resultStr, T_DATETIME)
-            logger.info("Sleep Only Task started %s, returned %s",
-                        resultDate - startTime,
-                        datetime.now(pytz.utc) - startTime)
+            logger.info(
+                "Sleep Only Task started %s, returned %s",
+                resultDate - startTime,
+                datetime.now(pytz.utc) - startTime,
+            )
 
     def _startWorkerDbLoop(self):
-        d = DeferredList([self._workerDbLoopStrand(n) for n in range(50)],
-                         fireOnOneErrback=True)
+        d = DeferredList(
+            [self._workerDbLoopStrand(n) for n in range(50)], fireOnOneErrback=True
+        )
         d.addErrback(vortexLogFailure, logger, consumerError=True)
 
     @inlineCallbacks
@@ -52,9 +57,11 @@ class MainController:
         # logger.info("DB Update Task - Ticking along")
 
         from peek_plugin_noop._private.worker.NoopWorkerTask import dbTask
+
         startTime = datetime.now(pytz.utc)
 
         while self._running:
             yield dbTask.delay("db update task str arg")
-            logger.info("DB Update Task, returned %s",
-                        datetime.now(pytz.utc) - startTime)
+            logger.info(
+                "DB Update Task, returned %s", datetime.now(pytz.utc) - startTime
+            )

@@ -1,4 +1,4 @@
-import {Injectable, OnDestroy} from "@angular/core";
+import { Injectable, OnDestroy } from "@angular/core"
 
 /** Client Root Service
  *
@@ -8,20 +8,19 @@ import {Injectable, OnDestroy} from "@angular/core";
  * Configure this in plugin_package.json
  */
 
-
 @Injectable()
 export class PluginNoopClientRootService implements OnDestroy {
-    private static instanceCount = 0;
-    private instanceIndex;
-
+    private static instanceCount = 0
+    private instanceIndex
+    
     constructor() {
-        this.instanceIndex = PluginNoopClientRootService.instanceCount++;
+        this.instanceIndex = PluginNoopClientRootService.instanceCount++
         console.log("peek-plugin-noop - PluginNoopClientRootService LOADED #"
-            + this.instanceIndex);
+            + this.instanceIndex)
     }
-
+    
     ngOnDestroy() {
         console.log("peek-plugin-noop - PluginNoopClientRootService DESTROYED #"
-            + this.instanceIndex);
+            + this.instanceIndex)
     }
 }

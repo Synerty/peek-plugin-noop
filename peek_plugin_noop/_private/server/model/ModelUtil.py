@@ -10,14 +10,20 @@ def trace(startNode, depth=4, indent=0, tracedNodes=None, lastStartNode=None):
     if depth == 0:
         return ""
 
-    formatProps = lambda n: ', '.join(["%s:'%s'" % i
-                                       for i in list(n.props.items())
-                                       if not i[0] in ['name', 'compareId']])
+    formatProps = lambda n: ", ".join(
+        [
+            "%s:'%s'" % i
+            for i in list(n.props.items())
+            if not i[0] in ["name", "compareId"]
+        ]
+    )
 
-    str = '%s->[%s], id:%s, %s\n' % (('-' * 4 * indent),
-                                     startNode.props.get('name', ''),
-                                     startNode.id,
-                                     formatProps(startNode))
+    str = "%s->[%s], id:%s, %s\n" % (
+        ("-" * 4 * indent),
+        startNode.props.get("name", ""),
+        startNode.id,
+        formatProps(startNode),
+    )
 
     tracedNodes.add(startNode)
 
@@ -26,14 +32,16 @@ def trace(startNode, depth=4, indent=0, tracedNodes=None, lastStartNode=None):
         if nextNode in tracedNodes:
             if nextNode != lastStartNode:
                 str += "%s->id:%s (already traced)\n"
-                str %= (('-' * 4 * (indent + 1)), nextNode.id)
+                str %= (("-" * 4 * (indent + 1)), nextNode.id)
             continue
 
-        str += trace(nextNode,
-                     depth=depth - 1,
-                     indent=indent + 1,
-                     tracedNodes=tracedNodes,
-                     lastStartNode=startNode)
+        str += trace(
+            nextNode,
+            depth=depth - 1,
+            indent=indent + 1,
+            tracedNodes=tracedNodes,
+            lastStartNode=startNode,
+        )
 
     return str
 
@@ -51,16 +59,16 @@ class GraphModel:
         if depth == 0:
             return
 
-        idVal = (startNode.props['alias']
-                 if 'alias' in startNode.props else
-                 'id:%s' % startNode.id)
+        idVal = (
+            startNode.props["alias"]
+            if "alias" in startNode.props
+            else "id:%s" % startNode.id
+        )
 
-        label = '%s\n[%s]\n%s' % (idVal,
-                                  startNode.props['name'],
-                                  startNode.type.name)
+        label = "%s\n[%s]\n%s" % (idVal, startNode.props["name"], startNode.type.name)
 
         self.__tracedNodes.add(startNode)
-        self.nodes.append({'id': str(startNode.id), 'label': label})
+        self.nodes.append({"id": str(startNode.id), "label": label})
 
         for nextConn in startNode.connections:
             nextNode = nextConn.otherConnectedNode(startNode)

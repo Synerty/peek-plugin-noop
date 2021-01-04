@@ -17,6 +17,7 @@ logger = get_task_logger(__name__)
 def add1(val):
     return val + 1
 
+
 @CeleryClient
 @celeryApp.task
 def task1(inStr):
@@ -28,7 +29,7 @@ def task1(inStr):
 @CeleryClient
 @celeryApp.task
 def dbTask(string1):
-    logger.info('Running')
+    logger.info("Running")
     session = CeleryDbConn.getDbSession()
     session.add(NoopTable(string1=string1))
     session.commit()

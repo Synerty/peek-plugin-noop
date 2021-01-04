@@ -1,10 +1,10 @@
-import { NgModule, OnDestroy } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
-import { PluginNoopClientRootService } from "./plugin-noop-root.service";
-import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
-import { NzIconModule } from "ng-zorro-antd/icon";
-import { MobileRootComponent } from "./root-component/root.component";
+import { NgModule, OnDestroy } from "@angular/core"
+import { HttpClientModule } from "@angular/common/http"
+import { PluginNoopClientRootService } from "./plugin-noop-root.service"
+import { CommonModule } from "@angular/common"
+import { FormsModule } from "@angular/forms"
+import { NzIconModule } from "ng-zorro-antd/icon"
+import { MobileRootComponent } from "./root-component/root.component"
 
 /** Client Root Module
  *
@@ -21,21 +21,21 @@ import { MobileRootComponent } from "./root-component/root.component";
     declarations: [MobileRootComponent],
 })
 export class PluginNoopClientRootModule implements OnDestroy {
-    private static instanceCount = 0;
-    private instanceIndex;
-
+    private static instanceCount = 0
+    private instanceIndex
+    
     constructor(private noopRootService: PluginNoopClientRootService) {
-        this.instanceIndex = PluginNoopClientRootModule.instanceCount++;
+        this.instanceIndex = PluginNoopClientRootModule.instanceCount++
         console.log(
             "peek-plugin-noop - PluginNoopClientRootModule LOADED #" +
-                this.instanceIndex
-        );
+            this.instanceIndex
+        )
     }
-
+    
     ngOnDestroy() {
         console.log(
             "peek-plugin-noop - PluginNoopClientRootModule DESTROYED #" +
-                this.instanceIndex
-        );
+            this.instanceIndex
+        )
     }
 }

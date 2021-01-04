@@ -6,8 +6,8 @@ from twisted.internet import reactor
 
 logger = logging.getLogger(__name__)
 
-class PluginWorkerEntryHook(PluginWorkerEntryHookABC):
 
+class PluginWorkerEntryHook(PluginWorkerEntryHookABC):
     def load(self):
         logger.debug("loaded")
 

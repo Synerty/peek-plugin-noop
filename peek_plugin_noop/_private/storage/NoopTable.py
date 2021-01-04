@@ -23,20 +23,18 @@ logger = logging.getLogger(__name__)
 
 @addTupleType
 class NoopTable(Tuple, DeclarativeBase):
-    """ NoopTable
+    """NoopTable
 
     This table doesn't do anything
 
     """
-    __tupleType__ = noopTuplePrefix + 'NoopTable'
-    __tablename__ = 'NoopTable'
+
+    __tupleType__ = noopTuplePrefix + "NoopTable"
+    __tablename__ = "NoopTable"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     string1 = Column(String(50))
 
     nonDbField = TupleField()
 
-    __table_args__ = (
-        Index("idx_NoopTable_unique_index", id, string1,
-              unique=True),
-    )
+    __table_args__ = (Index("idx_NoopTable_unique_index", id, string1, unique=True),)

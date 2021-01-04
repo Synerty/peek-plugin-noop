@@ -7,7 +7,6 @@ logger = logging.getLogger(__name__)
 
 
 class PluginAgentEntryHook(PluginAgentEntryHookABC):
-
     def load(self):
         logger.debug("loaded")
 

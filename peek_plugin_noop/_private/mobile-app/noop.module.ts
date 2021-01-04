@@ -1,29 +1,28 @@
-import {CommonModule} from "@angular/common";
-import {NgModule} from "@angular/core";
-import {Routes} from "@angular/router";
-import {RouterModule} from "@angular/router";
+import { CommonModule } from "@angular/common"
+import { NgModule } from "@angular/core"
+import { Routes } from "@angular/router"
+import { RouterModule } from "@angular/router"
 
 // Import the default route component
-import {NoopComponent} from "./noop.component";
-import {ConfigComponent} from "./config/config.component";
-
+import { NoopComponent } from "./noop.component"
+import { ConfigComponent } from "./config/config.component"
 
 // Define the child routes for this plugin
 export const pluginRoutes: Routes = [
     {
-        path: '/config',
+        path: "/config",
         component: ConfigComponent
     },
     {
-        path: '',
+        path: "",
         component: NoopComponent
     },
     {
-        path: '**',
+        path: "**",
         component: NoopComponent
     }
 
-];
+]
 
 // Define the root module for this plugin.
 // This module is loaded by the lazy loader, what ever this defines is what is started.
@@ -37,4 +36,5 @@ export const pluginRoutes: Routes = [
     providers: [],
     declarations: [NoopComponent, ConfigComponent]
 })
-export class NoopModule {}
+export class NoopModule {
+}
