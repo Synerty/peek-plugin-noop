@@ -33,8 +33,8 @@
         // Show Plugin In Title Bar
         // Show the plugin as an app on the home screen
         "showInTitleBar": false,
-        // True for left, false, for right
-        "titleBarLeft": false,
+        // Ant Icon for title bar
+        "antIcon": "smile",
         // The text on the button
         "titleBarText": "Noop",
         // The directory is where the angular2 route is for the client site
@@ -138,8 +138,8 @@
         // Show Plugin In Title Bar
         // Show the plugin as an app on the home screen
         "showInTitleBar": false,
-        // True for left, false, for right
-        "titleBarLeft": false,
+        // Ant Icon for title bar
+        "antIcon": "smile",
         // The text on the button
         "titleBarText": "Noop",
         // The directory is where the angular2 route is for the client site
