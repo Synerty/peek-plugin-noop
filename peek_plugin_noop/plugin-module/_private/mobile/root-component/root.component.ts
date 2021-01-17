@@ -1,5 +1,5 @@
 import { Component } from "@angular/core"
-import { NgLifeCycleEvents } from "@synerty/peek-plugin-base-js"
+import { NgLifeCycleEvents } from "@synerty/vortexjs"
 
 @Component({
     selector: "plugin-noop-mobile-root-component",
