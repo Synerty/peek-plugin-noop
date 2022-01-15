@@ -15,5 +15,4 @@ develop-eggs/
 *.egg-info
 MANIFEST
 dist
-.idea
 .vscode.scannerwork/
