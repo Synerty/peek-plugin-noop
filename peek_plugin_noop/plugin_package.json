@@ -246,8 +246,7 @@
         "appModule": "noop.module#NoopModule"
     },
     // Settings specific to the peek_logic_service service
-    "logic": {
-    },
+    "logic": {},
     // Settings specific to the database service
     // The database is migrated by the peek_logic_service and used from both the server and worker
     // services
@@ -256,9 +255,7 @@
         "alembicDir": "_private/alembic"
     },
     // Settings specific to the peek_worker_service service
-    "worker": {
-    },
+    "worker": {},
     // Settings specific to the peek_agent_service service
-    "agent": {
-    }
+    "agent": {}
 }
