@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Route, Routes } from "@angular/router";
 
 // Import the default route component
 import { NoopComponent } from "./noop.component";
