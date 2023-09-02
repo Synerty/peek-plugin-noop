@@ -15,7 +15,7 @@ export class NoopComponent extends NgLifeCycleEvents {
     date: string = "No data yet";
     stopped: boolean = false;
 
-    private filt = extend(
+    private filt = Object.assign(
         {
             key: "sendDate",
         },

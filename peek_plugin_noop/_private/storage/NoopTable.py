@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 
 @addTupleType
-class NoopTable(Tuple, DeclarativeBase):
+class NoopTable(DeclarativeBase, Tuple):
     """NoopTable
 
     This table doesn't do anything
